@@ -16,21 +16,63 @@ AnimationClip:
   m_PositionCurves: []
   m_ScaleCurves: []
   m_FloatCurves: []
-  m_PPtrCurves: []
-  m_SampleRate: 60
+  m_PPtrCurves:
+  - curve:
+    - time: 0
+      value: {fileID: 21300000, guid: 98a0ba4c8b8bf0a42b73876668092575, type: 3}
+    - time: 0.083333336
+      value: {fileID: 21300000, guid: 16ca043f051e5c54ea0e8dc8f3a07cf5, type: 3}
+    - time: 0.16666667
+      value: {fileID: 21300000, guid: 7654bb52b6ec67b49bee7149edfce55b, type: 3}
+    - time: 0.25
+      value: {fileID: 21300000, guid: 6d054c317420a5d46bb182a5b17ca629, type: 3}
+    - time: 0.33333334
+      value: {fileID: 21300000, guid: 59a675fdfb1a2e040b971a4b16580ac6, type: 3}
+    - time: 0.41666666
+      value: {fileID: 21300000, guid: e908443535c3d6e40bab99e83f9b5d63, type: 3}
+    - time: 0.5
+      value: {fileID: 21300000, guid: 44172ff58f51389429da934a403c689c, type: 3}
+    - time: 0.5833333
+      value: {fileID: 21300000, guid: 114a4dc25de5f2544ab4bb8a4a81e0e0, type: 3}
+    - time: 0.6666667
+      value: {fileID: 21300000, guid: f58f26ddcb7697543b26ddbc89ee5cc1, type: 3}
+    - time: 0.75
+      value: {fileID: 21300000, guid: b9fdbc60ff6e08846b443088dce5dd0a, type: 3}
+    attribute: m_Sprite
+    path: 
+    classID: 212
+    script: {fileID: 0}
+  m_SampleRate: 12
   m_WrapMode: 0
   m_Bounds:
     m_Center: {x: 0, y: 0, z: 0}
     m_Extent: {x: 0, y: 0, z: 0}
   m_ClipBindingConstant:
-    genericBindings: []
-    pptrCurveMapping: []
+    genericBindings:
+    - serializedVersion: 2
+      path: 0
+      attribute: 0
+      script: {fileID: 0}
+      typeID: 212
+      customType: 23
+      isPPtrCurve: 1
+    pptrCurveMapping:
+    - {fileID: 21300000, guid: 98a0ba4c8b8bf0a42b73876668092575, type: 3}
+    - {fileID: 21300000, guid: 16ca043f051e5c54ea0e8dc8f3a07cf5, type: 3}
+    - {fileID: 21300000, guid: 7654bb52b6ec67b49bee7149edfce55b, type: 3}
+    - {fileID: 21300000, guid: 6d054c317420a5d46bb182a5b17ca629, type: 3}
+    - {fileID: 21300000, guid: 59a675fdfb1a2e040b971a4b16580ac6, type: 3}
+    - {fileID: 21300000, guid: e908443535c3d6e40bab99e83f9b5d63, type: 3}
+    - {fileID: 21300000, guid: 44172ff58f51389429da934a403c689c, type: 3}
+    - {fileID: 21300000, guid: 114a4dc25de5f2544ab4bb8a4a81e0e0, type: 3}
+    - {fileID: 21300000, guid: f58f26ddcb7697543b26ddbc89ee5cc1, type: 3}
+    - {fileID: 21300000, guid: b9fdbc60ff6e08846b443088dce5dd0a, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 1
+    m_StopTime: 0.8333333
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -50,4 +92,18 @@ AnimationClip:
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
   m_GenerateMotionCurves: 0
-  m_Events: []
+  m_Events:
+  - time: 0.25
+    functionName: ActivateSwordHB
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.5833333
+    functionName: DeactivateSwordHB
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
