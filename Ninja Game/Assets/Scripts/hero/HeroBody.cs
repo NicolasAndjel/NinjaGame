@@ -201,4 +201,13 @@ public class HeroBody : MonoBehaviour {
         transform.SetParent(null);
         Debug.Log("En el aire");
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.layer == 10)
+        {
+            print("hit");
+            animator.SetTrigger("hit");
+        }
+    }
 }

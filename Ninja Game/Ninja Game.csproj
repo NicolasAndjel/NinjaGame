@@ -298,9 +298,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\HeroBody.cs" />
-    <Compile Include="Assets\Scripts\HeroBrain.cs" />
-    <Compile Include="Assets\Scripts\Kunai.cs" />
+    <Compile Include="Assets\Scripts\enemies\EnemyBody.cs" />
+    <Compile Include="Assets\Scripts\enemies\EnemyBrain.cs" />
+    <Compile Include="Assets\Scripts\hero\HeroBody.cs" />
+    <Compile Include="Assets\Scripts\hero\HeroBrain.cs" />
+    <Compile Include="Assets\Scripts\weapons\Kunai.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />
