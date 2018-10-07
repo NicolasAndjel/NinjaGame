@@ -1,12 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class HeroBody : MonoBehaviour {
 
-    public int lives = 3;
+    GameManager gameManager;
+    public int life = 3;
     public float speed;
     public Rigidbody2D heroRigidBody;
+    public SpriteRenderer sprite;
     public float jumpForce;
     float directionOnAir;
     public float slideForce;
@@ -35,8 +38,10 @@ public class HeroBody : MonoBehaviour {
         heroBrain = GetComponent<HeroBrain>();
         heroCollider = GetComponent<BoxCollider2D>();
         animator = GetComponent<Animator>();
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         swordHBRight = transform.Find("swordHBRight").gameObject;
         swordHBLeft = transform.Find("swordHBLeft").gameObject;
+        sprite = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
@@ -88,11 +93,11 @@ public class HeroBody : MonoBehaviour {
     {
         if (direction < 0)
         {
-            GetComponent<SpriteRenderer>().flipX = true;
+            sprite.flipX = true;
         }
         else if (direction > 0)
         {
-            GetComponent<SpriteRenderer>().flipX = false;
+            sprite.flipX = false;
         }
         animator.SetFloat("WalkSpeed", Mathf.Abs(direction));
 
@@ -206,8 +211,18 @@ public class HeroBody : MonoBehaviour {
     {
         if (collision.gameObject.layer == 10)
         {
-            print("hit");
-            animator.SetTrigger("hit");
+            if (life > 0)
+            {
+                print("hit");
+                animator.SetTrigger("hit");
+                life--;
+            }
+            else if (life <= 0)
+            {
+                animator.SetTrigger("die");
+                //enemyCollider.enabled = !enemyCollider.enabled;
+                gameManager.Invoke("Loose", 1);
+            }
         }
     }
 }

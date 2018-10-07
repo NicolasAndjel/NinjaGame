@@ -4,10 +4,9 @@ using UnityEngine;
 
 public class EnemyBody : MonoBehaviour {
 
-    HeroBody hero;
     public EnemyBrain enemyBrain;
     public Animator animator;
-    public int lives = 3;
+    public int life = 1;
     public float speed;
 
     public Rigidbody2D enemyRigidBody;
@@ -26,7 +25,6 @@ public class EnemyBody : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        hero = GameObject.Find("hero").GetComponent<HeroBody>();
         animator = GetComponent<Animator>();
         enemyRigidBody = GetComponent<Rigidbody2D>();
         enemyBrain = GetComponent<EnemyBrain>();
@@ -87,8 +85,19 @@ public class EnemyBody : MonoBehaviour {
     {
         if (collision.gameObject.layer == 9)
         {
-            print("hit");
-            animator.SetTrigger("hit");
+            if (life > 0)
+            {
+                print("hit");
+                life--;
+                animator.SetTrigger("hit");
+            }
+            else if (life <= 0)
+            {
+                animator.SetTrigger("die");
+                //enemyCollider.enabled = !enemyCollider.enabled;
+                enemyBrain.alive = false;
+                enemyBrain.Invoke("Die", 1);
+            }
         }
     }
 }

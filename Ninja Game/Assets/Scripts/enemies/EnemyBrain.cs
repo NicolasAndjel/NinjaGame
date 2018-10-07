@@ -9,6 +9,7 @@ public class EnemyBrain : MonoBehaviour
     public EnemyBody enemyBody;
     Vector3 direction;
     bool canAttack = true;
+    public bool alive = true;
 
     // Use this for initialization
     void Start()
@@ -19,7 +20,7 @@ public class EnemyBrain : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        CheckHero();
+        if (alive) CheckHero();
     }
 
     void CheckHero()
@@ -45,12 +46,15 @@ public class EnemyBrain : MonoBehaviour
             direction = Vector3.zero;
         }
         enemyBody.Move(direction);
-        //print("distance to hero is: " + distanceToHero);
-        //print("direciton is: " + direction);
     }
 
     void CanAttackAgain()
     {
         canAttack = true;
+    }
+
+    public void Die()
+    {
+        gameObject.SetActive(false);
     }
 }
