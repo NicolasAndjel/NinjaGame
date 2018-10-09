@@ -304,6 +304,7 @@
     <Compile Include="Assets\Scripts\hero\HeroBody.cs" />
     <Compile Include="Assets\Scripts\hero\HeroBrain.cs" />
     <Compile Include="Assets\Scripts\MenuManager.cs" />
+    <Compile Include="Assets\Scripts\Triggers\FightTrigger.cs" />
     <Compile Include="Assets\Scripts\weapons\Kunai.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

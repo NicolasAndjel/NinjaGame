@@ -9,7 +9,7 @@ public class HeroBody : MonoBehaviour {
     public int life = 3;
     public float speed;
     public Rigidbody2D heroRigidBody;
-    public SpriteRenderer sprite;
+    SpriteRenderer sprite;
     public float jumpForce;
     float directionOnAir;
     public float slideForce;
@@ -31,6 +31,8 @@ public class HeroBody : MonoBehaviour {
 
     bool swordAttacking;
     float swordTimer;
+    bool canTakeDamage;
+    float invulnerableTime;
 
     // Use this for initialization
     void Start () {
@@ -42,6 +44,7 @@ public class HeroBody : MonoBehaviour {
         swordHBRight = transform.Find("swordHBRight").gameObject;
         swordHBLeft = transform.Find("swordHBLeft").gameObject;
         sprite = GetComponent<SpriteRenderer>();
+        canTakeDamage = true;
     }
 
     // Update is called once per frame
@@ -76,6 +79,24 @@ public class HeroBody : MonoBehaviour {
                 DeactivateSwordHB();
                 swordAttacking = false;
             }
+        }
+        if (!canTakeDamage)
+        {
+            invulnerableTime += Time.deltaTime;
+            Color blinkAlpha = sprite.material.color;
+            if ((int)invulnerableTime % 2 == 0) // esto no está funcionando!! Talvez mandando parámetro al animator??
+            {
+                blinkAlpha.a = 0.3f + Mathf.PingPong(Time.deltaTime, 0.7f);
+            }
+            //    sprite.color = Color.white;
+            //    print("rojo");
+            //}
+
+            //else
+            //{
+            //    sprite.color = Color.red;
+            //    print("blanco");
+            //}
         }
     }
 
@@ -157,24 +178,19 @@ public class HeroBody : MonoBehaviour {
         if (GetComponent<SpriteRenderer>().flipX == false)
         {
             Invoke("ThrowRight", 0.1f);
-            //Instantiate(kunaiPrefab, spawnerR.transform.position, Quaternion.Euler(0, 0, 270));
-
         }
         else
         {
             Invoke("ThrowLeft", 0.1f);
-            //Instantiate(kunaiPrefab, spawnerL.transform.position, Quaternion.Euler(0, 0, 90));
         }            
     }
-    // USAR LERP para el DASH, no esto: heroRigidBody.AddForce(new Vector2 (dashDir, 0)  * dashForce, ForceMode2D.Force);
-    //heroCollider.size /= 2;
 
     public void AirKunaiThrow()
     {
         animator.SetTrigger("airThrow");
         if (GetComponent<SpriteRenderer>().flipX == false)
         {
-            Instantiate(kunaiPrefab, spawnerR.transform.position, Quaternion.Euler(0, 0, 250));//new Quaternion(1, 1, 1, 0)); //oodría manejar la rotación de otra forma?
+            Instantiate(kunaiPrefab, spawnerR.transform.position, Quaternion.Euler(0, 0, 250));
         }
         else
         {
@@ -193,36 +209,76 @@ public class HeroBody : MonoBehaviour {
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.layer != 8) return;
-        onAir = false;
-        transform.SetParent(collision.transform);
-        animator.SetInteger("SpeedY", 0);
+        
+        if (collision.gameObject.layer == 8)
+        {
+            onAir = false;
+            transform.SetParent(collision.transform);
+            animator.SetInteger("SpeedY", 0);
+        }
+        if (canTakeDamage)
+        {
+            if (collision.gameObject.layer == 11)
+            {
+                TakingDamage(collision.gameObject.transform.position.x);
+            }
+        }
     }
 
     private void OnCollisionExit2D(Collision2D collision)
     {
-        if (collision.gameObject.layer != 8) return;
-        onAir = true;
-        transform.SetParent(null);
-        Debug.Log("En el aire");
+        if (collision.gameObject.layer == 8)
+        {
+            onAir = true;
+            transform.SetParent(null);
+        }
+        
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.layer == 10)
         {
-            if (life > 0)
+            if (canTakeDamage)
             {
-                print("hit");
-                animator.SetTrigger("hit");
-                life--;
-            }
-            else if (life <= 0)
-            {
-                animator.SetTrigger("die");
-                //enemyCollider.enabled = !enemyCollider.enabled;
-                gameManager.Invoke("Loose", 1);
+                TakingDamage(collision.gameObject.transform.position.x);
             }
         }
+    }
+
+    private void TakingDamage(float enemyPosition)
+    {
+        if (life > 1)
+        {
+            animator.SetTrigger("hit");
+            animator.SetFloat("WalkSpeed", 0);
+            life--;
+            heroBrain.TakingDamage();
+            canTakeDamage = false;
+            Invoke("CanTakeDamage", 0.5f);
+            if (transform.position.x < enemyPosition)
+            {
+                heroRigidBody.AddForce(new Vector2(-150, 1));
+            }
+            else
+            {
+                heroRigidBody.AddForce(new Vector2(150, 1));
+            }
+
+
+        }
+        else if (life <= 1)
+        {
+            animator.SetTrigger("die");
+            //enemyCollider.enabled = !enemyCollider.enabled;
+            gameManager.Invoke("Loose", 1);
+            heroBrain.Invoke("Dead", 0);
+        }
+    }
+
+
+    private void CanTakeDamage()
+    {
+        canTakeDamage = true;
     }
 }

@@ -18,9 +18,10 @@ public class EnemyBody : MonoBehaviour {
 
     GameObject swordHBRight;
     GameObject swordHBLeft;
-    bool swordAttacking;
+    //bool swordAttacking;
     float swordTimer;
 
+    bool enemyStun;
 
 
     // Use this for initialization
@@ -32,6 +33,7 @@ public class EnemyBody : MonoBehaviour {
         animator = GetComponent<Animator>();
         swordHBRight = transform.Find("swordHBRight").gameObject;
         swordHBLeft = transform.Find("swordHBLeft").gameObject;
+        enemyStun = false;
     }
 	
 	// Update is called once per frame
@@ -41,30 +43,33 @@ public class EnemyBody : MonoBehaviour {
 
     public void Move(Vector3 direction)
     {
-        if (direction.x < 0)
+        if (!enemyStun)
         {
-            GetComponent<SpriteRenderer>().flipX = true;
-        }
-        else if (direction.x > 0)
-        {
-            GetComponent<SpriteRenderer>().flipX = false;
-        }
+            if (direction.x < 0)
+            {
+                GetComponent<SpriteRenderer>().flipX = true;
+            }
+            else if (direction.x > 0)
+            {
+                GetComponent<SpriteRenderer>().flipX = false;
+            }
 
-        if (direction != Vector3.zero)
-        {
-            animator.SetFloat("speed", 1f);
-            direction.Normalize();
-            transform.position += speed * direction * Time.deltaTime;
-        }
-        else
-        {
-            animator.SetFloat("speed", 0f);
-        }
+            if (direction != Vector3.zero)
+            {
+                animator.SetFloat("speed", 1f);
+                direction.Normalize();
+                transform.position += speed * direction * Time.deltaTime;
+            }
+            else
+            {
+                animator.SetFloat("speed", 0f);
+            }
+        }   
     }
 
     public void Attack()
     {
-        swordAttacking = true;
+        //swordAttacking = true;
         animator.SetTrigger("Attack");
     }
 
@@ -87,9 +92,9 @@ public class EnemyBody : MonoBehaviour {
         {
             if (life > 0)
             {
-                print("hit");
                 life--;
                 animator.SetTrigger("hit");
+                DamageFeedback(collision.gameObject.transform.position.x);
             }
             else if (life <= 0)
             {
@@ -99,5 +104,26 @@ public class EnemyBody : MonoBehaviour {
                 enemyBrain.Invoke("Die", 1);
             }
         }
+    }
+
+    private void DamageFeedback(float heroPosition)
+    {
+        enemyStun = true;
+        if (transform.position.x < heroPosition)//collision.gameObject.GetComponent<SpriteRenderer>().flipX == true)
+        {
+            enemyRigidBody.AddForce(new Vector2(-150, 1));
+            print("Heroe Pega desde la derecha");
+        }
+        else
+        {
+            enemyRigidBody.AddForce(new Vector2(150, 1));
+            print("Heroe Pega desde la izquierda");
+        }
+        Invoke("CanMoveAgain", 0.5f);
+    }
+
+    private void CanMoveAgain()
+    {
+        enemyStun = false;
     }
 }

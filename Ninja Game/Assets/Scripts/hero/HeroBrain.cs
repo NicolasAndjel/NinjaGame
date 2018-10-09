@@ -6,17 +6,36 @@ public class HeroBrain : MonoBehaviour {
 
     public HeroBody heroBody;
     float kunaiTimer;
-    bool canShoot = true;
+    bool canShoot;
+    bool takingDamage;
+    bool dead;
+    float stunTimer;
+    public float stunTime;
 
 
     // Use this for initialization
     void Start () {
         heroBody = GetComponent<HeroBody>();
-	}
+        dead = false;
+        takingDamage = false;
+        canShoot = true;
+    }
 	
 	// Update is called once per frame
 	void Update () {
-        CheckKeys();
+        if (!dead && !takingDamage)
+        {
+            CheckKeys();
+        }
+        if (takingDamage)
+        {
+            stunTimer += Time.deltaTime;
+            if (stunTimer >= stunTime)
+            {
+                takingDamage = false;
+                stunTimer = 0;
+            }
+        }
     }
 
     void CheckKeys()
@@ -24,19 +43,6 @@ public class HeroBrain : MonoBehaviour {
         float direction = Input.GetAxis("Horizontal");
 
         heroBody.Move(direction);
-
-        //anim.SetFloat("WalkSpeed", Mathf.Abs(horizontal));
-
-        //if (Input.GetButtonDown("swordAttack"))
-        //{
-        //    anim.Play("Hit");
-        //    lives -= 1;
-        //    anim.SetInteger("Life", lives);
-        //    if (lives <= 0)
-        //    {
-        //        anim.Play("Die");
-        //    }
-        //}
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
@@ -76,4 +82,15 @@ public class HeroBrain : MonoBehaviour {
     {
         canShoot = true;
     }
- }
+
+    public void TakingDamage()
+    {
+        takingDamage = true;
+        //falta algún timer para que se haga false
+    }
+
+    public void Dead()
+    {
+        dead = true;
+    }
+}

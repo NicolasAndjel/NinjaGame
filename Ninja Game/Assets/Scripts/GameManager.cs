@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour {
     public GameObject pausePanel;
 
     public GameObject[] enemies;
+
     bool endGame;
 
     // Use this for initialization
@@ -83,9 +84,16 @@ public class GameManager : MonoBehaviour {
         }
         if (endGame)
         {
-            Win();
-            winPanel.SetActive(true);
-            Time.timeScale = 0;
+            Invoke("Win", 1);
         }
     }
+
+    //public void TrapActivated()
+    //{
+    //    print("El manager recibió la señal");
+    //    GameObject trapArc = GameObject.Find("trapArc");
+    //    float trapArcHeight = trapArc.transform.position.y;
+    //    trapArcHeight = 3;
+    //    print("El arco debería bajar");
+    //}
 }
