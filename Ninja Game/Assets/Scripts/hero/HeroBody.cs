@@ -15,7 +15,7 @@ public class HeroBody : MonoBehaviour {
     public float slideForce;
     bool sliding;
     float slideTimer;
-    public bool onAir = false;
+    public bool onAir = true;
 
     public Animator animator;
     public GameObject kunaiPrefab;
@@ -32,7 +32,8 @@ public class HeroBody : MonoBehaviour {
     bool swordAttacking;
     float swordTimer;
     bool canTakeDamage;
-    float invulnerableTime;
+
+    public Transform spawnPoint;
 
     // Use this for initialization
     void Start () {
@@ -79,24 +80,6 @@ public class HeroBody : MonoBehaviour {
                 DeactivateSwordHB();
                 swordAttacking = false;
             }
-        }
-        if (!canTakeDamage)
-        {
-            invulnerableTime += Time.deltaTime;
-            Color blinkAlpha = sprite.material.color;
-            if ((int)invulnerableTime % 2 == 0) // esto no está funcionando!! Talvez mandando parámetro al animator??
-            {
-                blinkAlpha.a = 0.3f + Mathf.PingPong(Time.deltaTime, 0.7f);
-            }
-            //    sprite.color = Color.white;
-            //    print("rojo");
-            //}
-
-            //else
-            //{
-            //    sprite.color = Color.red;
-            //    print("blanco");
-            //}
         }
     }
 
@@ -216,6 +199,11 @@ public class HeroBody : MonoBehaviour {
             transform.SetParent(collision.transform);
             animator.SetInteger("SpeedY", 0);
         }
+        if (collision.gameObject.layer == 13)
+        {
+            FellToAbyss();
+        }
+
         if (canTakeDamage)
         {
             if (collision.gameObject.layer == 11)
@@ -254,6 +242,7 @@ public class HeroBody : MonoBehaviour {
             animator.SetFloat("WalkSpeed", 0);
             life--;
             heroBrain.TakingDamage();
+            gameManager.ReduceLife();
             canTakeDamage = false;
             Invoke("CanTakeDamage", 0.5f);
             if (transform.position.x < enemyPosition)
@@ -276,6 +265,27 @@ public class HeroBody : MonoBehaviour {
         }
     }
 
+    private void FellToAbyss()
+    {
+        if (life > 1)
+        {
+            animator.SetTrigger("hit");
+            animator.SetFloat("WalkSpeed", 0);
+            life--;
+            heroBrain.TakingDamage();
+            gameManager.ReduceLife();
+            canTakeDamage = false;
+            Invoke("CanTakeDamage", 0.5f);
+            transform.position = spawnPoint.transform.position;
+        }
+        else if (life <= 1)
+        {
+            animator.SetTrigger("die");
+            //enemyCollider.enabled = !enemyCollider.enabled;
+            gameManager.Loose();
+            heroBrain.Invoke("Dead", 0);
+        }
+    }
 
     private void CanTakeDamage()
     {

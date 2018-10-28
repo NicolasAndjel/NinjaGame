@@ -41,7 +41,7 @@ public class EnemyBody : MonoBehaviour {
         
     }
 
-    public void Move(Vector3 direction)
+        public void Move(Vector3 direction)
     {
         if (!enemyStun)
         {
@@ -112,12 +112,10 @@ public class EnemyBody : MonoBehaviour {
         if (transform.position.x < heroPosition)//collision.gameObject.GetComponent<SpriteRenderer>().flipX == true)
         {
             enemyRigidBody.AddForce(new Vector2(-150, 1));
-            print("Heroe Pega desde la derecha");
         }
         else
         {
             enemyRigidBody.AddForce(new Vector2(150, 1));
-            print("Heroe Pega desde la izquierda");
         }
         Invoke("CanMoveAgain", 0.5f);
     }

@@ -8,21 +8,37 @@ public class GameManager : MonoBehaviour {
     public GameObject loosePanel;
     public GameObject winPanel;
     public GameObject pausePanel;
+    public GameObject[] lives;
 
     public GameObject[] enemies;
 
     bool endGame;
 
+    public AudioSource source;
+    public AudioSource bossSource;
+    public AudioClip level1;
+    public AudioClip bossFight;
+    public AudioClip kunaiThrow;
+    public AudioClip kunaiHit;
+    public AudioClip sword;
+    public AudioClip slide;
+    public AudioClip jump;
+    public AudioClip gameOverSound;
+    public AudioClip winSound;
+
     // Use this for initialization
     void Start () {
         Time.timeScale = 1;
         enemies = GameObject.FindGameObjectsWithTag("enemy");
+
+        source.clip = level1;
+        source.Play();
     }
 	
 	// Update is called once per frame
 	void Update () {
         PauseGame();
-        CheckEnemies();
+        //CheckEnemies();
     }
 
     public void LoadScene(string sceneName)
@@ -70,30 +86,48 @@ public class GameManager : MonoBehaviour {
         pausePanel.SetActive(false);
     }
 
-    public void CheckEnemies()
+    public void PlayAudio(AudioClip audioName)
+    {
+        source.PlayOneShot(audioName);
+        print("should be playing: " + audioName);
+    }
+
+    public void BossMusic()
+    {
+        source.Stop();
+        bossSource.clip = bossFight;
+        bossSource.Play();
+    }
+
+    //public void CheckEnemies()
+    //{
+    //    endGame = true;
+    //    for (int i = 0; i < enemies.Length; i++)
+    //    {
+    //        GameObject enemy = enemies[i];
+    //        if (enemy.activeInHierarchy)
+    //        {
+    //            endGame = false;
+    //            break;
+    //        }
+    //    }
+    //    if (endGame)
+    //    {
+    //        Invoke("Win", 1);
+    //    }
+    //}
+
+    public void ReduceLife()
     {
         endGame = true;
-        for (int i = 0; i < enemies.Length; i++)
+        for (int i = 0; i < lives.Length; i++)
         {
-            GameObject enemy = enemies[i];
-            if (enemy.activeInHierarchy)
+            GameObject life = lives[i];
+            if (life.activeInHierarchy)
             {
-                endGame = false;
+                life.SetActive(false);
                 break;
             }
         }
-        if (endGame)
-        {
-            Invoke("Win", 1);
-        }
     }
-
-    //public void TrapActivated()
-    //{
-    //    print("El manager recibió la señal");
-    //    GameObject trapArc = GameObject.Find("trapArc");
-    //    float trapArcHeight = trapArc.transform.position.y;
-    //    trapArcHeight = 3;
-    //    print("El arco debería bajar");
-    //}
 }

@@ -27,17 +27,17 @@ public class EnemyBrain : MonoBehaviour
     {
         float distanceToHero = Vector3.Distance(hero.transform.position, enemyBody.transform.position);
 
-        if (distanceToHero < 7 && distanceToHero > 1.5f)
+        if (distanceToHero < 9 && distanceToHero > 1.5f)
         {
             direction = hero.transform.position - enemyBody.transform.position;
         }
-        else if (distanceToHero < 1.5f)
+        else if (distanceToHero < 2f)
         {
             if (canAttack)
             {
                 enemyBody.Attack();
                 canAttack = false;
-                Invoke("CanAttackAgain", 0.2f);
+                Invoke("CanAttackAgain", 0.5f);
             }
             direction = Vector3.zero;
         }

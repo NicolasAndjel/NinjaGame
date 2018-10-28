@@ -298,13 +298,17 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\enemies\BossBody.cs" />
+    <Compile Include="Assets\Scripts\enemies\BossBrain.cs" />
+    <Compile Include="Assets\Scripts\enemies\BossWaypoints.cs" />
     <Compile Include="Assets\Scripts\enemies\EnemyBody.cs" />
     <Compile Include="Assets\Scripts\enemies\EnemyBrain.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\hero\HeroBody.cs" />
     <Compile Include="Assets\Scripts\hero\HeroBrain.cs" />
     <Compile Include="Assets\Scripts\MenuManager.cs" />
-    <Compile Include="Assets\Scripts\Triggers\FightTrigger.cs" />
+    <Compile Include="Assets\Scripts\sceneLoader.cs" />
+    <Compile Include="Assets\Scripts\weapons\DarkKunai.cs" />
     <Compile Include="Assets\Scripts\weapons\Kunai.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

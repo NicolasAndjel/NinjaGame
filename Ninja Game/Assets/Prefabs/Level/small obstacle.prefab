@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4205156086695194}
   - component: {fileID: 212283446770270216}
   - component: {fileID: 61188130404309106}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: small obstacle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -52,7 +52,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1067883903037160}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 45.760956, y: -2.6734755, z: 0}
+  m_LocalPosition: {x: 102.73304, y: -2.69, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4619333265207202}
@@ -109,7 +109,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 1
   m_UsedByComposite: 0
-  m_Offset: {x: 0.034577847, y: 0.5890317}
+  m_Offset: {x: 0.000022888184, y: 0.5890317}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -120,7 +120,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.70119, y: 0.10344219}
+  m_Size: {x: 2.3383942, y: 0.10344219}
   m_EdgeRadius: 0
 --- !u!212 &212283446770270216
 SpriteRenderer:

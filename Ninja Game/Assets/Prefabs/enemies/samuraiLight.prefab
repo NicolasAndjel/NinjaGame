@@ -127,7 +127,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1327950572503494}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.654, y: -0.45, z: 0}
+  m_LocalPosition: {x: -0.8, y: -0.45, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4622467896185892}
@@ -289,7 +289,7 @@ MonoBehaviour:
   enemyBrain: {fileID: 114833868156064854}
   animator: {fileID: 95704330154672572}
   life: 1
-  speed: 2
+  speed: 3
   enemyRigidBody: {fileID: 50200391747012798}
   enemyCollider: {fileID: 61314466930342954}
   shurikenPrefab: {fileID: 0}

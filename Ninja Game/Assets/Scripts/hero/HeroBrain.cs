@@ -9,6 +9,7 @@ public class HeroBrain : MonoBehaviour {
     bool canShoot;
     bool takingDamage;
     bool dead;
+    bool canSlide;
     float stunTimer;
     public float stunTime;
 
@@ -19,6 +20,7 @@ public class HeroBrain : MonoBehaviour {
         dead = false;
         takingDamage = false;
         canShoot = true;
+        canSlide = true;
     }
 	
 	// Update is called once per frame
@@ -41,23 +43,29 @@ public class HeroBrain : MonoBehaviour {
     void CheckKeys()
     {
         float direction = Input.GetAxis("Horizontal");
-
         heroBody.Move(direction);
 
+        
         if (Input.GetKeyDown(KeyCode.Space))
         {
             heroBody.Jump(direction);
         }
 
-        if (Input.GetButtonDown("slide"))
+        if (canSlide)
         {
-            if (direction > 0) direction = 1;
-            else if (direction < 0) direction = -1;
-            if (direction != 0)
+            if (Input.GetButtonDown("slide"))
             {
-                heroBody.Slide(direction);
+                if (direction > 0) direction = 1;
+                else if (direction < 0) direction = -1;
+                if (direction != 0)
+                {
+                    heroBody.Slide(direction);
+                    canSlide = false;
+                    Invoke("CanSlideAgain", 0.7f);
+                }
             }
         }
+        
 
         if (Input.GetButtonDown("swordAttack"))
         {
@@ -81,6 +89,11 @@ public class HeroBrain : MonoBehaviour {
     void CanShootAgain()
     {
         canShoot = true;
+    }
+
+    void CanSlideAgain()
+    {
+        canSlide = true;
     }
 
     public void TakingDamage()
