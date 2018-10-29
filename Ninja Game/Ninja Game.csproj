@@ -306,6 +306,7 @@
     <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\hero\HeroBody.cs" />
     <Compile Include="Assets\Scripts\hero\HeroBrain.cs" />
+    <Compile Include="Assets\Scripts\levelObjects\Target.cs" />
     <Compile Include="Assets\Scripts\MenuManager.cs" />
     <Compile Include="Assets\Scripts\sceneLoader.cs" />
     <Compile Include="Assets\Scripts\weapons\DarkKunai.cs" />

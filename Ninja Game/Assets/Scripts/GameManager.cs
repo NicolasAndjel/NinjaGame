@@ -26,11 +26,11 @@ public class GameManager : MonoBehaviour {
     public AudioClip gameOverSound;
     public AudioClip winSound;
 
+
     // Use this for initialization
     void Start () {
         Time.timeScale = 1;
         enemies = GameObject.FindGameObjectsWithTag("enemy");
-
         source.clip = level1;
         source.Play();
     }
