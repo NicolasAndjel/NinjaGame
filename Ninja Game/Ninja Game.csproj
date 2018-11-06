@@ -303,6 +303,10 @@
     <Compile Include="Assets\Scripts\enemies\BossWaypoints.cs" />
     <Compile Include="Assets\Scripts\enemies\EnemyBody.cs" />
     <Compile Include="Assets\Scripts\enemies\EnemyBrain.cs" />
+    <Compile Include="Assets\Scripts\enemies\SamuraiHeavyBody.cs" />
+    <Compile Include="Assets\Scripts\enemies\SamuraiHeavyBrain.cs" />
+    <Compile Include="Assets\Scripts\enemies\ShredderBody.cs" />
+    <Compile Include="Assets\Scripts\enemies\ShredderBrain.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\hero\HeroBody.cs" />
     <Compile Include="Assets\Scripts\hero\HeroBrain.cs" />
