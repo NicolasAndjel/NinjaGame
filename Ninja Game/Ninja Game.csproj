@@ -313,6 +313,7 @@
     <Compile Include="Assets\Scripts\levelObjects\Target.cs" />
     <Compile Include="Assets\Scripts\MenuManager.cs" />
     <Compile Include="Assets\Scripts\sceneLoader.cs" />
+    <Compile Include="Assets\Scripts\Triggers\FightTrigger.cs" />
     <Compile Include="Assets\Scripts\weapons\DarkKunai.cs" />
     <Compile Include="Assets\Scripts\weapons\Kunai.cs" />
   </ItemGroup>
