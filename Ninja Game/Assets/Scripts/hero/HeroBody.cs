@@ -35,6 +35,8 @@ public class HeroBody : MonoBehaviour {
 
     public Transform spawnPoint;
 
+    public float glideTime;
+
     // Use this for initialization
     void Start () {
         heroRigidBody = GetComponent<Rigidbody2D>();
@@ -198,6 +200,8 @@ public class HeroBody : MonoBehaviour {
             onAir = false;
             transform.SetParent(collision.transform);
             animator.SetInteger("SpeedY", 0);
+            animator.SetInteger("grounded", 0);
+            print("should be grounded");
         }
         if (collision.gameObject.layer == 13)
         {
@@ -263,6 +267,35 @@ public class HeroBody : MonoBehaviour {
             gameManager.Invoke("Loose", 1);
             heroBrain.Invoke("Dead", 0);
         }
+    }
+
+    public void Glide()
+    {
+        animator.SetTrigger("glide");
+        GetComponent<Rigidbody2D>().gravityScale = 0;
+        heroBrain.Gliding();
+        Invoke("StopGlide", glideTime);
+        heroBrain.Invoke("StopGliding", glideTime);
+        if (heroRigidBody.velocity.x >= 0)
+        {
+            heroRigidBody.velocity = new Vector3(heroRigidBody.velocity.x, 0, 0);
+            heroRigidBody.AddForce(Vector2.right, ForceMode2D.Impulse);
+            print("velicity.x es " + heroRigidBody.velocity.x);
+        }
+        else
+        {
+            heroRigidBody.velocity = new Vector3(heroRigidBody.velocity.x, 0, 0);
+            heroRigidBody.AddForce(-Vector2.right, ForceMode2D.Impulse);
+            print("velicity.x es " + heroRigidBody.velocity.x);
+
+        }
+
+    }
+
+    private void StopGlide()
+    {
+        GetComponent<Rigidbody2D>().gravityScale = 1;
+        heroRigidBody.isKinematic = false;
     }
 
     private void FellToAbyss()

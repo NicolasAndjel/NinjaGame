@@ -10,9 +10,11 @@ public class HeroBrain : MonoBehaviour {
     bool takingDamage;
     bool dead;
     bool canSlide;
+    bool canGlide;
     float stunTimer;
     public float stunTime;
-
+    bool sliding;
+    bool gliding;
 
     // Use this for initialization
     void Start () {
@@ -21,11 +23,14 @@ public class HeroBrain : MonoBehaviour {
         takingDamage = false;
         canShoot = true;
         canSlide = true;
+        canGlide = true;
+        sliding = false;
+        gliding = false;
     }
 	
 	// Update is called once per frame
 	void Update () {
-        if (!dead && !takingDamage)
+        if (!dead && !takingDamage && !gliding && !sliding)
         {
             CheckKeys();
         }
@@ -42,9 +47,9 @@ public class HeroBrain : MonoBehaviour {
 
     void CheckKeys()
     {
+
         float direction = Input.GetAxis("Horizontal");
         heroBody.Move(direction);
-
         
         if (Input.GetKeyDown(KeyCode.Space))
         {
@@ -65,7 +70,18 @@ public class HeroBrain : MonoBehaviour {
                 }
             }
         }
-        
+
+
+        if (!heroBody.onAir)
+        {
+            canGlide = true;
+        }
+        if (heroBody.onAir && canGlide && Input.GetButtonDown("slide"))
+        {
+            heroBody.Glide();
+            canGlide = false;
+        }
+
 
         if (Input.GetButtonDown("swordAttack"))
         {
@@ -94,6 +110,16 @@ public class HeroBrain : MonoBehaviour {
     void CanSlideAgain()
     {
         canSlide = true;
+    }    
+
+    public void Gliding()
+    {
+        gliding = true;
+    }
+
+    public void StopGliding()
+    {
+        gliding = false;
     }
 
     public void TakingDamage()

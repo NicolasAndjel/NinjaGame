@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4000657308578100}
   - component: {fileID: 61081623857643996}
   - component: {fileID: 251055450000869158}
+  - component: {fileID: 50542191257503988}
   m_Layer: 8
   m_Name: platform
   m_TagString: Untagged
@@ -38,7 +39,8 @@ GameObject:
   - component: {fileID: 4529382788497624}
   - component: {fileID: 212190982011498572}
   - component: {fileID: 61515725477026244}
-  m_Layer: 0
+  - component: {fileID: 50690317947227394}
+  m_Layer: 12
   m_Name: arc
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -72,6 +74,46 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!50 &50542191257503988
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1795792210062348}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!50 &50690317947227394
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1905281573399338}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!61 &61081623857643996
 BoxCollider2D:
   m_ObjectHideFlags: 1

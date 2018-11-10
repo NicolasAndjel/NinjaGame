@@ -55,6 +55,7 @@ public class EnemyBrain : MonoBehaviour
 
     public void Die()
     {
+
         gameObject.SetActive(false);
     }
 }

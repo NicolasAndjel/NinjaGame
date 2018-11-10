@@ -99,7 +99,8 @@ public class EnemyBody : MonoBehaviour {
             else if (life <= 0)
             {
                 animator.SetTrigger("die");
-                //enemyCollider.enabled = !enemyCollider.enabled;
+                GetComponent<BoxCollider2D>().enabled = false;
+                GetComponent<Rigidbody2D>().gravityScale = 0;
                 enemyBrain.alive = false;
                 enemyBrain.Invoke("Die", 1);
             }
@@ -109,7 +110,7 @@ public class EnemyBody : MonoBehaviour {
     private void DamageFeedback(float heroPosition)
     {
         enemyStun = true;
-        if (transform.position.x < heroPosition)//collision.gameObject.GetComponent<SpriteRenderer>().flipX == true)
+        if (transform.position.x < heroPosition)
         {
             enemyRigidBody.AddForce(new Vector2(-150, 1));
         }

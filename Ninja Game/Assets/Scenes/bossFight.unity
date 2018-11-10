@@ -639,7 +639,7 @@ SpriteRenderer:
   m_Size: {x: 8, y: 6}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
 --- !u!1 &105309750
 GameObject:
@@ -1748,6 +1748,7 @@ GameObject:
   - component: {fileID: 468424976}
   - component: {fileID: 468424978}
   - component: {fileID: 468424977}
+  - component: {fileID: 468424979}
   m_Layer: 8
   m_Name: roofFloor (1)
   m_TagString: Untagged
@@ -1829,6 +1830,26 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
+--- !u!50 &468424979
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 468424975}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &503956754
 GameObject:
   m_ObjectHideFlags: 0
@@ -2185,6 +2206,34 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 57ee928fee8bb8d488c19bc8cd02205e, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &642781843
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 313853481}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 642781844}
+  m_Layer: 0
+  m_Name: Missing Prefab
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &642781844
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 313853481}
+  m_GameObject: {fileID: 642781843}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 21
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &644998637
 GameObject:
   m_ObjectHideFlags: 0
@@ -2396,7 +2445,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4205156086695194, guid: 57ee928fee8bb8d488c19bc8cd02205e, type: 2}
       propertyPath: m_RootOrder
-      value: 21
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 1067883903037160, guid: 57ee928fee8bb8d488c19bc8cd02205e, type: 2}
       propertyPath: m_Name
@@ -2805,7 +2854,7 @@ SpriteRenderer:
   m_Size: {x: 8, y: 6}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
 --- !u!4 &956804878
 Transform:
@@ -2880,6 +2929,7 @@ GameObject:
   - component: {fileID: 1011240300}
   - component: {fileID: 1011240299}
   - component: {fileID: 1011240301}
+  - component: {fileID: 1011240302}
   m_Layer: 8
   m_Name: roofFloor
   m_TagString: Untagged
@@ -2963,6 +3013,26 @@ EdgeCollider2D:
   m_Points:
   - {x: -47.185, y: 0}
   - {x: 47.185, y: 0}
+--- !u!50 &1011240302
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1011240298}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &1011700437
 GameObject:
   m_ObjectHideFlags: 0
@@ -3368,7 +3438,7 @@ SpriteRenderer:
   m_Size: {x: 8, y: 6}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
 --- !u!1 &1204734976
 GameObject:
@@ -3569,7 +3639,7 @@ SpriteRenderer:
   m_Size: {x: 8, y: 6}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
 --- !u!4 &1218517704
 Transform:
@@ -4897,6 +4967,7 @@ GameObject:
   - component: {fileID: 1855425586}
   - component: {fileID: 1855425588}
   - component: {fileID: 1855425587}
+  - component: {fileID: 1855425589}
   m_Layer: 8
   m_Name: roofFloor (2)
   m_TagString: Untagged
@@ -4978,6 +5049,26 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
+--- !u!50 &1855425589
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1855425585}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &1861260093
 GameObject:
   m_ObjectHideFlags: 0

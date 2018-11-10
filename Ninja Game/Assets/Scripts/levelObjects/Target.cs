@@ -4,20 +4,19 @@ using UnityEngine;
 
 public class Target : MonoBehaviour {
 
-    public GameObject door;
-    Vector3 doorPosition;
-    bool doorOpened;
-    float targetWidth;
+    Vector3 targetScale;
+    public Sprite hitSprite;
+    float doorPosition;
+    float doorMovement;
+    public Door door;
 
     // Use this for initialization
     void Start () {
-        doorPosition = transform.position;
-        doorOpened = false;
-        targetWidth = transform.localScale.x;
+        door = transform.Find("door").gameObject.GetComponent<Door>();
     }
-	
-	// Update is called once per frame
-	void Update () {
+
+    // Update is called once per frame
+    void Update () {
 		
 	}
 
@@ -25,21 +24,10 @@ public class Target : MonoBehaviour {
     {
         if (collision.gameObject.layer == 9)
         {
-            doorPosition.y += 1;
-            doorOpened = true;
-            targetWidth /= 2;
+            door.RaiseDoor();
+            GetComponent<SpriteRenderer>().sprite = hitSprite;
+            GetComponent<CircleCollider2D>().enabled = false;
             print("Target Trigger detectó al Kunai");
-        }
-    }
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.layer == 9)
-        {
-            doorPosition.y++;
-            doorOpened = true;
-            targetWidth /= 2;
-            print("Target Collision detectó al Kunai");
         }
     }
 }

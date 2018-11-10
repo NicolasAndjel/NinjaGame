@@ -101,7 +101,8 @@ public class ShredderBody : MonoBehaviour {
             else if (life <= 0)
             {
                 animator.SetTrigger("die");
-                //shredderCollider.enabled = !shredderCollider.enabled;
+                GetComponent<BoxCollider2D>().enabled = false;
+                GetComponent<Rigidbody2D>().gravityScale = 0;
                 shredderBrain.alive = false;
                 shredderBrain.Invoke("Die", 1);
             }
@@ -111,7 +112,7 @@ public class ShredderBody : MonoBehaviour {
     private void DamageFeedback(float heroPosition)
     {
         shredderStun = true;
-        if (transform.position.x < heroPosition)//collision.gameObject.GetComponent<SpriteRenderer>().flipX == true)
+        if (transform.position.x < heroPosition)
         {
             shredderRigidBody.AddForce(new Vector2(-150, 1));
         }

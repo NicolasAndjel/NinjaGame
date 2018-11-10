@@ -20,19 +20,9 @@ public class Kunai : MonoBehaviour {
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.layer == 11 || collision.gameObject.layer == 12)
+        if (collision.gameObject.layer == 11 || collision.gameObject.layer == 12 || collision.gameObject.layer == 8)
         {
             Destroy(gameObject);
-            print("Kunai trigger detectó la diana");
-        }
-    }
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.layer == 12)
-        {
-            Destroy(gameObject);
-            print("Kunai Collision detectó la diana");
         }
     }
 }

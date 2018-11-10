@@ -101,7 +101,8 @@ public class SamuraiHeavyBody : MonoBehaviour {
             else if (life <= 0)
             {
                 animator.SetTrigger("die");
-                //samuraiCollider.enabled = !samuraiCollider.enabled;
+                GetComponent<BoxCollider2D>().enabled = false;
+                GetComponent<Rigidbody2D>().gravityScale = 0;
                 samuraiBrain.alive = false;
                 samuraiBrain.Invoke("Die", 1);
             }
