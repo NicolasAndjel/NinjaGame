@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EnemyBody : MonoBehaviour {
 
+    GameManager gameManager;
     public EnemyBrain enemyBrain;
     public Animator animator;
     public int life = 1;
@@ -34,6 +35,7 @@ public class EnemyBody : MonoBehaviour {
         swordHBRight = transform.Find("swordHBRight").gameObject;
         swordHBLeft = transform.Find("swordHBLeft").gameObject;
         enemyStun = false;
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 	
 	// Update is called once per frame

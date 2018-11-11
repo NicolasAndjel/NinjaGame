@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class SamuraiHeavyBody : MonoBehaviour {
 
+    GameManager gameManager;
     public SamuraiHeavyBrain samuraiBrain;
     public Animator animator;
     public int life = 1;
@@ -35,6 +36,7 @@ public class SamuraiHeavyBody : MonoBehaviour {
         swordHBRight = transform.Find("swordHBRight").gameObject;
         swordHBLeft = transform.Find("swordHBLeft").gameObject;
         samuraiStun = false;
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
     // Update is called once per frame

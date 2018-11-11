@@ -1,11 +1,39 @@
 fileFormatVersion: 2
 guid: 2d21e368884f2a74b918b26cefe34625
-timeCreated: 1538929568
+timeCreated: 1541879789
 licenseType: Free
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - loosePanel: {instanceID: 0}
+  - winPanel: {instanceID: 0}
+  - pausePanel: {instanceID: 0}
+  - source: {instanceID: 0}
+  - bossSource: {instanceID: 0}
+  - level1: {instanceID: 0}
+  - bossFight: {instanceID: 0}
+  - kunaiThrow: {instanceID: 0}
+  - kunaiHit: {instanceID: 0}
+  - sword: {instanceID: 0}
+  - slide: {instanceID: 0}
+  - jump: {instanceID: 0}
+  - glide: {fileID: 8300000, guid: 7ad2969e21bde9b49aa32a16512997e2, type: 3}
+  - gameOverSound: {instanceID: 0}
+  - winSound: {instanceID: 0}
+  - samuraiLightWalk: {instanceID: 0}
+  - samuraiLightSword: {instanceID: 0}
+  - samuraiLightHit: {instanceID: 0}
+  - samuraiLightDie: {instanceID: 0}
+  - samuraiHeavyWalk: {instanceID: 0}
+  - samuraiHeavySword: {instanceID: 0}
+  - samuraiHeavyHit: {instanceID: 0}
+  - samuraiHeavyDie: {instanceID: 0}
+  - shredderWalk: {instanceID: 0}
+  - shredderSword: {instanceID: 0}
+  - shredderHit: {instanceID: 0}
+  - shredderDie: {instanceID: 0}
+  - bossSound: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

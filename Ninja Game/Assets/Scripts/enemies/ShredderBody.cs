@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ShredderBody : MonoBehaviour {
 
+    GameManager gameManager;
     public ShredderBrain shredderBrain;
     public Animator animator;
     public int life = 1;
@@ -35,6 +36,7 @@ public class ShredderBody : MonoBehaviour {
         swordHBRight = transform.Find("swordHBRight").gameObject;
         swordHBLeft = transform.Find("swordHBLeft").gameObject;
         shredderStun = false;
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
     // Update is called once per frame
@@ -131,6 +133,7 @@ public class ShredderBody : MonoBehaviour {
     public void SaiThrow()
     {
         animator.SetTrigger("Attack");
+        gameManager.source.PlayOneShot(gameManager.saiThrow);
         if (GetComponent<SpriteRenderer>().flipX == false)
         {
             Invoke("ThrowRight", 0.1f);

@@ -18,13 +18,35 @@ public class GameManager : MonoBehaviour {
     public AudioSource bossSource;
     public AudioClip level1;
     public AudioClip bossFight;
+    public AudioClip heroLand;
+    public AudioClip heroHit;
+    public AudioClip heroDie;
     public AudioClip kunaiThrow;
     public AudioClip kunaiHit;
     public AudioClip sword;
     public AudioClip slide;
     public AudioClip jump;
+    public AudioClip glide;
     public AudioClip gameOverSound;
     public AudioClip winSound;
+    public AudioClip samuraiLightWalk;
+    public AudioClip samuraiLightSword;
+    public AudioClip samuraiLightHit;
+    public AudioClip samuraiLightDie;
+    public AudioClip samuraiHeavyWalk;
+    public AudioClip samuraiHeavySword;
+    public AudioClip samuraiHeavyHit;
+    public AudioClip samuraiHeavyDie;
+    public AudioClip shredderWalk;
+    public AudioClip shredderSword;
+    public AudioClip shredderHit;
+    public AudioClip shredderDie;
+    public AudioClip saiThrow;
+    public AudioClip bossSound;
+    public AudioClip targetHit;
+    public AudioClip doorRaise;
+    
+
 
 
     // Use this for initialization
@@ -98,24 +120,6 @@ public class GameManager : MonoBehaviour {
         bossSource.clip = bossFight;
         bossSource.Play();
     }
-
-    //public void CheckEnemies()
-    //{
-    //    endGame = true;
-    //    for (int i = 0; i < enemies.Length; i++)
-    //    {
-    //        GameObject enemy = enemies[i];
-    //        if (enemy.activeInHierarchy)
-    //        {
-    //            endGame = false;
-    //            break;
-    //        }
-    //    }
-    //    if (endGame)
-    //    {
-    //        Invoke("Win", 1);
-    //    }
-    //}
 
     public void ReduceLife()
     {

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Target : MonoBehaviour {
 
+    GameManager gameManager;
     Vector3 targetScale;
     public Sprite hitSprite;
     float doorPosition;
@@ -13,6 +14,7 @@ public class Target : MonoBehaviour {
     // Use this for initialization
     void Start () {
         door = transform.Find("door").gameObject.GetComponent<Door>();
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
     // Update is called once per frame
@@ -24,6 +26,7 @@ public class Target : MonoBehaviour {
     {
         if (collision.gameObject.layer == 9)
         {
+            gameManager.source.PlayOneShot(gameManager.targetHit);
             door.RaiseDoor();
             GetComponent<SpriteRenderer>().sprite = hitSprite;
             GetComponent<CircleCollider2D>().enabled = false;

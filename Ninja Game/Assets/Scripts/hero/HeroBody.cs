@@ -88,12 +88,12 @@ public class HeroBody : MonoBehaviour {
     public void Jump(float direction)
     {
         if (onAir) return;
+        gameManager.source.PlayOneShot(gameManager.jump);
         heroRigidBody.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
         heroRigidBody.AddForce(Vector2.right * direction, ForceMode2D.Impulse);
         directionOnAir = direction;
     }
         
-
 
     public void Move(float direction)
     {
@@ -133,8 +133,7 @@ public class HeroBody : MonoBehaviour {
         heroRigidBody.AddForce(new Vector2(slideDir, 0) * slideForce, ForceMode2D.Impulse);
         heroCollider.size /= 1.5f;
         sliding = true;
-      
-        
+        gameManager.source.PlayOneShot(gameManager.slide);
     }
 
     public void SwordAttack()
@@ -142,6 +141,7 @@ public class HeroBody : MonoBehaviour {
         if (onAir) animator.SetTrigger("airAttack");
         else animator.SetTrigger("groundAttack");
         swordAttacking = true;
+        gameManager.source.PlayOneShot(gameManager.sword);
     }
 
     public void ActivateSwordHB()
@@ -160,6 +160,7 @@ public class HeroBody : MonoBehaviour {
     public void KunaiThrow()
     {
         animator.SetTrigger("throw");
+        gameManager.source.PlayOneShot(gameManager.kunaiThrow);
         if (GetComponent<SpriteRenderer>().flipX == false)
         {
             Invoke("ThrowRight", 0.1f);
@@ -173,6 +174,7 @@ public class HeroBody : MonoBehaviour {
     public void AirKunaiThrow()
     {
         animator.SetTrigger("airThrow");
+        gameManager.source.PlayOneShot(gameManager.kunaiThrow);
         if (GetComponent<SpriteRenderer>().flipX == false)
         {
             Instantiate(kunaiPrefab, spawnerR.transform.position, Quaternion.Euler(0, 0, 250));
@@ -201,7 +203,7 @@ public class HeroBody : MonoBehaviour {
             transform.SetParent(collision.transform);
             animator.SetInteger("SpeedY", 0);
             animator.SetInteger("grounded", 0);
-            print("should be grounded");
+            gameManager.source.PlayOneShot(gameManager.heroLand);
         }
         if (collision.gameObject.layer == 13)
         {
@@ -272,6 +274,7 @@ public class HeroBody : MonoBehaviour {
     public void Glide()
     {
         animator.SetTrigger("glide");
+        gameManager.source.PlayOneShot(gameManager.glide);
         GetComponent<Rigidbody2D>().gravityScale = 0;
         heroBrain.Gliding();
         Invoke("StopGlide", glideTime);
@@ -280,13 +283,11 @@ public class HeroBody : MonoBehaviour {
         {
             heroRigidBody.velocity = new Vector3(heroRigidBody.velocity.x, 0, 0);
             heroRigidBody.AddForce(Vector2.right, ForceMode2D.Impulse);
-            print("velicity.x es " + heroRigidBody.velocity.x);
         }
         else
         {
             heroRigidBody.velocity = new Vector3(heroRigidBody.velocity.x, 0, 0);
             heroRigidBody.AddForce(-Vector2.right, ForceMode2D.Impulse);
-            print("velicity.x es " + heroRigidBody.velocity.x);
 
         }
 
@@ -300,9 +301,10 @@ public class HeroBody : MonoBehaviour {
 
     private void FellToAbyss()
     {
-        if (life > 1)
+        if (life > 0)
         {
             animator.SetTrigger("hit");
+            gameManager.source.PlayOneShot(gameManager.heroHit);
             animator.SetFloat("WalkSpeed", 0);
             life--;
             heroBrain.TakingDamage();
@@ -314,6 +316,7 @@ public class HeroBody : MonoBehaviour {
         else if (life <= 1)
         {
             animator.SetTrigger("die");
+            gameManager.source.PlayOneShot(gameManager.heroDie);
             //enemyCollider.enabled = !enemyCollider.enabled;
             gameManager.Loose();
             heroBrain.Invoke("Dead", 0);
