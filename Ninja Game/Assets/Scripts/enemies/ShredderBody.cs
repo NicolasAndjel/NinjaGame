@@ -23,6 +23,7 @@ public class ShredderBody : MonoBehaviour {
     float swordTimer;
 
     bool shredderStun;
+    bool stepPlaying;
 
 
     // Use this for initialization
@@ -37,6 +38,7 @@ public class ShredderBody : MonoBehaviour {
         swordHBLeft = transform.Find("swordHBLeft").gameObject;
         shredderStun = false;
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        stepPlaying = false;
     }
 
     // Update is called once per frame
@@ -63,12 +65,23 @@ public class ShredderBody : MonoBehaviour {
                 animator.SetFloat("speed", 1f);
                 direction.Normalize();
                 transform.position += speed * direction * Time.deltaTime;
+                if (!stepPlaying)
+                {
+                    gameManager.source.PlayOneShot(gameManager.heroLand, Random.Range(0.5f, 1f));
+                    stepPlaying = true;
+                    Invoke("StepSound", 0.2f);
+                }
             }
             else
             {
                 animator.SetFloat("speed", 0f);
             }
         }
+    }
+
+    void StepSound()
+    {
+        stepPlaying = false;
     }
 
     public void Attack()
@@ -98,11 +111,13 @@ public class ShredderBody : MonoBehaviour {
             {
                 life--;
                 animator.SetTrigger("hit");
+                gameManager.source.PlayOneShot(gameManager.shredderHit);
                 DamageFeedback(collision.gameObject.transform.position.x);
             }
             else if (life <= 0)
             {
                 animator.SetTrigger("die");
+                gameManager.source.PlayOneShot(gameManager.shredderDie);
                 GetComponent<BoxCollider2D>().enabled = false;
                 GetComponent<Rigidbody2D>().gravityScale = 0;
                 shredderBrain.alive = false;

@@ -32,6 +32,7 @@ public class HeroBody : MonoBehaviour {
     bool swordAttacking;
     float swordTimer;
     bool canTakeDamage;
+    bool stepPlaying;
 
     public Transform spawnPoint;
 
@@ -48,6 +49,7 @@ public class HeroBody : MonoBehaviour {
         swordHBLeft = transform.Find("swordHBLeft").gameObject;
         sprite = GetComponent<SpriteRenderer>();
         canTakeDamage = true;
+        stepPlaying = false;
     }
 
     // Update is called once per frame
@@ -122,8 +124,19 @@ public class HeroBody : MonoBehaviour {
         {
             Vector3 heroSpeed = new Vector3(direction * speed, heroRigidBody.velocity.y, 0);
             heroRigidBody.velocity = heroSpeed;
+            if (direction != 0 && !stepPlaying)
+            {
+                gameManager.source.PlayOneShot(gameManager.heroLand, Random.Range(0.5f, 1f));
+                stepPlaying = true;
+                Invoke("StepSound", 0.2f);
+            }
         }
         
+    }
+
+    void StepSound()
+    {
+        stepPlaying = false;
     }
     
     public void Slide(float slideDir)
@@ -202,7 +215,7 @@ public class HeroBody : MonoBehaviour {
             onAir = false;
             transform.SetParent(collision.transform);
             animator.SetInteger("SpeedY", 0);
-            animator.SetInteger("grounded", 0);
+            //animator.SetTrigger("grounded");
             gameManager.source.PlayOneShot(gameManager.heroLand);
         }
         if (collision.gameObject.layer == 13)
@@ -216,6 +229,16 @@ public class HeroBody : MonoBehaviour {
             {
                 TakingDamage(collision.gameObject.transform.position.x);
             }
+        }
+    }
+
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        if (collision.gameObject.layer == 8)
+        {
+            onAir = false;
+            transform.SetParent(collision.transform);
+            animator.SetInteger("SpeedY", 0);
         }
     }
 
@@ -245,6 +268,7 @@ public class HeroBody : MonoBehaviour {
         if (life > 1)
         {
             animator.SetTrigger("hit");
+            gameManager.source.PlayOneShot(gameManager.heroHit);
             animator.SetFloat("WalkSpeed", 0);
             life--;
             heroBrain.TakingDamage();
@@ -265,6 +289,7 @@ public class HeroBody : MonoBehaviour {
         else if (life <= 1)
         {
             animator.SetTrigger("die");
+            gameManager.source.PlayOneShot(gameManager.heroDie);
             //enemyCollider.enabled = !enemyCollider.enabled;
             gameManager.Invoke("Loose", 1);
             heroBrain.Invoke("Dead", 0);

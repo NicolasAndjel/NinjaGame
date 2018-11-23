@@ -19,6 +19,5 @@ public class Door : MonoBehaviour {
     public void RaiseDoor()
     {
         transform.position = new Vector3(transform.position.x, transform.position.y / 2.5f, transform.position.z);
-        gameManager.source.PlayOneShot(gameManager.doorRaise);
     }
 }

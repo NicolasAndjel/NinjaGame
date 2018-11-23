@@ -222,13 +222,30 @@ MonoBehaviour:
   - {fileID: 0}
   enemies: []
   source: {fileID: 82857913951881494}
-  bossSource: {fileID: 82175195158406030}
   level1: {fileID: 8300000, guid: d7052daa4be2bc247813fb0e3de242f0, type: 3}
+  levelFirst: {fileID: 8300000, guid: 4359e16fddfb714458ca00cc534cba15, type: 3}
+  levelSecond: {fileID: 0}
   bossFight: {fileID: 8300000, guid: 439e12005963f114e992455107acc7ec, type: 3}
-  kunaiThrow: {fileID: 0}
-  kunaiHit: {fileID: 0}
-  sword: {fileID: 0}
-  slide: {fileID: 0}
-  jump: {fileID: 0}
-  gameOverSound: {fileID: 0}
-  winSound: {fileID: 0}
+  heroLand: {fileID: 8300000, guid: 458639a037fcd5e48aefdc43fe29df42, type: 3}
+  heroHit: {fileID: 8300000, guid: e8dc1189fc78abf4cb45399340ca8331, type: 3}
+  heroDie: {fileID: 8300000, guid: 800dca5eb0cea04438483477431dc540, type: 3}
+  kunaiThrow: {fileID: 8300000, guid: 427024dac5effee4cb6c54cc10a6ffbe, type: 3}
+  kunaiHit: {fileID: 8300000, guid: 7912234c26d07524fb89c2cea8ee2b78, type: 3}
+  sword: {fileID: 8300000, guid: 2edd298abe3d2e146b0023045e4b25f7, type: 3}
+  slide: {fileID: 8300000, guid: 62e2002d81fa64e428efa6a471178238, type: 3}
+  jump: {fileID: 8300000, guid: c633f5947c9d82e4598d966ee0d311fc, type: 3}
+  glide: {fileID: 8300000, guid: 23c4abe6c10fff54ba800c5e83179b04, type: 3}
+  gameOverSound: {fileID: 8300000, guid: c461da583fd00464a86b7766c397ab55, type: 3}
+  winSound: {fileID: 8300000, guid: 4880fb40e497ae7469e41de0502b7a43, type: 3}
+  samuraiLightSword: {fileID: 8300000, guid: 2edd298abe3d2e146b0023045e4b25f7, type: 3}
+  samuraiLightHit: {fileID: 8300000, guid: e535bc17ac9ae1342b6bac11b818d4b2, type: 3}
+  samuraiLightDie: {fileID: 8300000, guid: 31bb5ef2093bcde42909fd89371bfb0a, type: 3}
+  samuraiHeavySword: {fileID: 8300000, guid: 0ac088e0356a1ab4fa1f6534f7bf9ada, type: 3}
+  samuraiHeavyHit: {fileID: 8300000, guid: a15db8020c13f6f4da88daf29e10b824, type: 3}
+  samuraiHeavyDie: {fileID: 8300000, guid: 24d75d05af3c4a943983c91beca7eaa5, type: 3}
+  shredderSword: {fileID: 8300000, guid: 4d9de936d1944744581095371f7c509a, type: 3}
+  shredderHit: {fileID: 8300000, guid: 18fe57c8e6c9ba7488e8ab0d6530ddcb, type: 3}
+  shredderDie: {fileID: 8300000, guid: 53e50c0acaf09eb45873d0bb390f816e, type: 3}
+  saiThrow: {fileID: 8300000, guid: 3adc29e978cb10b49b24378229e64024, type: 3}
+  bossSound: {fileID: 8300000, guid: 5bf7a4bd132a99640b4f0ed91481e04a, type: 3}
+  targetHit: {fileID: 8300000, guid: 3bee688ef4b8739418bbeccac9f5b2bd, type: 3}

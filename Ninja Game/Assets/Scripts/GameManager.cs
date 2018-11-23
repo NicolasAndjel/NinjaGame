@@ -15,8 +15,9 @@ public class GameManager : MonoBehaviour {
     bool endGame;
 
     public AudioSource source;
-    public AudioSource bossSource;
     public AudioClip level1;
+    public AudioClip levelFirst;
+    public AudioClip levelSecond;
     public AudioClip bossFight;
     public AudioClip heroLand;
     public AudioClip heroHit;
@@ -29,22 +30,18 @@ public class GameManager : MonoBehaviour {
     public AudioClip glide;
     public AudioClip gameOverSound;
     public AudioClip winSound;
-    public AudioClip samuraiLightWalk;
     public AudioClip samuraiLightSword;
     public AudioClip samuraiLightHit;
     public AudioClip samuraiLightDie;
-    public AudioClip samuraiHeavyWalk;
     public AudioClip samuraiHeavySword;
     public AudioClip samuraiHeavyHit;
     public AudioClip samuraiHeavyDie;
-    public AudioClip shredderWalk;
     public AudioClip shredderSword;
     public AudioClip shredderHit;
     public AudioClip shredderDie;
     public AudioClip saiThrow;
     public AudioClip bossSound;
     public AudioClip targetHit;
-    public AudioClip doorRaise;
     
 
 
@@ -53,7 +50,23 @@ public class GameManager : MonoBehaviour {
     void Start () {
         Time.timeScale = 1;
         enemies = GameObject.FindGameObjectsWithTag("enemy");
-        source.clip = level1;
+        Scene currentScene = SceneManager.GetActiveScene();
+        string sceneName = currentScene.name;
+        source.Stop();
+        switch (sceneName)
+        {
+            case "Level1":
+                source.clip = level1;
+                break;
+            case "LevelFirst":
+                source.clip = levelFirst;
+
+                break;
+            case "LevelSecond":
+                source.clip = levelSecond;
+                break;
+        }
+        
         source.Play();
     }
 	
@@ -76,12 +89,18 @@ public class GameManager : MonoBehaviour {
     public void Win()
     {
         winPanel.SetActive(true);
+        source.Stop();
+        source.clip = winSound;
+        source.Play();
         Time.timeScale = 0;
     }
 
     public void Loose()
     {
         loosePanel.SetActive(true);
+        source.Stop();
+        source.clip = gameOverSound;
+        source.Play();
         Time.timeScale = 0;
     }
 
@@ -117,8 +136,8 @@ public class GameManager : MonoBehaviour {
     public void BossMusic()
     {
         source.Stop();
-        bossSource.clip = bossFight;
-        bossSource.Play();
+        source.clip = bossFight;
+        source.Play();
     }
 
     public void ReduceLife()

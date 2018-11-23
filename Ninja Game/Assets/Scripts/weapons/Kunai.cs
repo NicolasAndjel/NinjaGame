@@ -25,11 +25,7 @@ public class Kunai : MonoBehaviour {
         if (collision.gameObject.layer == 11 || collision.gameObject.layer == 12 || collision.gameObject.layer == 8)
         {
             Destroy(gameObject);
-            if (collision.gameObject.layer == 11)
-            {
-                gameManager.source.PlayOneShot(gameManager.kunaiHit);
-            }
-            else
+            if (collision.gameObject.layer != 11)
             {
                 gameManager.source.PlayOneShot(gameManager.kunaiHit);
             }

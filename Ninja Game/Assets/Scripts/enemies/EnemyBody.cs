@@ -23,6 +23,7 @@ public class EnemyBody : MonoBehaviour {
     float swordTimer;
 
     bool enemyStun;
+    bool stepPlaying;
 
 
     // Use this for initialization
@@ -36,6 +37,7 @@ public class EnemyBody : MonoBehaviour {
         swordHBLeft = transform.Find("swordHBLeft").gameObject;
         enemyStun = false;
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        stepPlaying = false;
     }
 	
 	// Update is called once per frame
@@ -61,12 +63,23 @@ public class EnemyBody : MonoBehaviour {
                 animator.SetFloat("speed", 1f);
                 direction.Normalize();
                 transform.position += speed * direction * Time.deltaTime;
+                if (!stepPlaying)
+                {
+                    gameManager.source.PlayOneShot(gameManager.heroLand, Random.Range(0.5f, 1f));
+                    stepPlaying = true;
+                    Invoke("StepSound", 0.2f);
+                }
             }
             else
             {
                 animator.SetFloat("speed", 0f);
             }
         }   
+    }
+
+    void StepSound()
+    {
+        stepPlaying = false;
     }
 
     public void Attack()
@@ -96,11 +109,14 @@ public class EnemyBody : MonoBehaviour {
             {
                 life--;
                 animator.SetTrigger("hit");
+                gameManager.source.PlayOneShot(gameManager.samuraiLightHit);
                 DamageFeedback(collision.gameObject.transform.position.x);
             }
             else if (life <= 0)
             {
                 animator.SetTrigger("die");
+                gameManager.source.PlayOneShot(gameManager.samuraiLightDie);
+                print("Está muerto");
                 GetComponent<BoxCollider2D>().enabled = false;
                 GetComponent<Rigidbody2D>().gravityScale = 0;
                 enemyBrain.alive = false;
