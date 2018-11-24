@@ -6,6 +6,7 @@ TagManager:
   tags:
   - enemy
   - heart
+  - kunai
   layers:
   - Default
   - TransparentFX

@@ -9,6 +9,7 @@ public class ShredderBody : MonoBehaviour {
     public Animator animator;
     public int life = 1;
     public float speed;
+    Vector3 moveDirection;
 
     public Rigidbody2D shredderRigidBody;
     public BoxCollider2D shredderCollider;
@@ -49,6 +50,7 @@ public class ShredderBody : MonoBehaviour {
 
     public void Move(Vector3 direction)
     {
+        moveDirection = direction;
         if (!shredderStun)
         {
             if (direction.x < 0)
@@ -122,6 +124,31 @@ public class ShredderBody : MonoBehaviour {
                 GetComponent<Rigidbody2D>().gravityScale = 0;
                 shredderBrain.alive = false;
                 shredderBrain.Invoke("Die", 1);
+            }
+        }
+    }
+
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        if (collision.gameObject.layer == 12)
+        {
+            if (collision.gameObject.transform.position.x > transform.position.x)//si choca con objeto a su derecha
+            {
+                if (moveDirection.x > 0)
+                {
+                    shredderStun = true;
+                    animator.SetFloat("speed", 0f);
+                }
+                else shredderStun = false;
+            }
+            else //si choca con objeto a su izquierda
+            {
+                if (moveDirection.x < 0)
+                {
+                    shredderStun = true;
+                    animator.SetFloat("speed", 0f);
+                }
+                else shredderStun = false;
             }
         }
     }

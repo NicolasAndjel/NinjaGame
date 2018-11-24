@@ -23,6 +23,7 @@ public class GameManager : MonoBehaviour {
     public AudioClip heroDie;
     public AudioClip kunaiThrow;
     public AudioClip kunaiHit;
+    public AudioClip kunaiDenied;
     public AudioClip sword;
     public AudioClip slide;
     public AudioClip jump;
@@ -55,6 +56,9 @@ public class GameManager : MonoBehaviour {
         switch (sceneName)
         {
             case "Level1":
+                source.clip = level1;
+                break;
+            case "bossFight":
                 source.clip = level1;
                 break;
             case "LevelFirst":

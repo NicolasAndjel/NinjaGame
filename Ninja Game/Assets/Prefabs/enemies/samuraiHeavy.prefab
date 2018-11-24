@@ -71,7 +71,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1560804724664444}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 21.3, y: -1.91, z: 0}
+  m_LocalPosition: {x: 5.62, y: -1.1344929, z: 0}
   m_LocalScale: {x: 0.7599782, y: 0.7599782, z: 0.7599782}
   m_Children:
   - {fileID: 4561987799497640}
@@ -230,8 +230,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   samuraiBrain: {fileID: 0}
   animator: {fileID: 0}
-  life: 2
-  speed: 3
+  life: 4
+  speed: 2
   samuraiRigidBody: {fileID: 50616691975260248}
   samuraiCollider: {fileID: 61608250729554662}
   shurikenPrefab: {fileID: 0}

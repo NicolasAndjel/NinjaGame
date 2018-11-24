@@ -288,7 +288,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shredderBrain: {fileID: 114615930996583282}
   animator: {fileID: 0}
-  life: 0
+  life: 1
   speed: 3
   shredderRigidBody: {fileID: 50069774980868374}
   shredderCollider: {fileID: 61587021062881272}

@@ -224,13 +224,14 @@ MonoBehaviour:
   source: {fileID: 82857913951881494}
   level1: {fileID: 8300000, guid: d7052daa4be2bc247813fb0e3de242f0, type: 3}
   levelFirst: {fileID: 8300000, guid: 4359e16fddfb714458ca00cc534cba15, type: 3}
-  levelSecond: {fileID: 0}
+  levelSecond: {fileID: 8300000, guid: 77e499af3e8f5a343b38dc989c3d0ae7, type: 3}
   bossFight: {fileID: 8300000, guid: 439e12005963f114e992455107acc7ec, type: 3}
   heroLand: {fileID: 8300000, guid: 458639a037fcd5e48aefdc43fe29df42, type: 3}
   heroHit: {fileID: 8300000, guid: e8dc1189fc78abf4cb45399340ca8331, type: 3}
   heroDie: {fileID: 8300000, guid: 800dca5eb0cea04438483477431dc540, type: 3}
   kunaiThrow: {fileID: 8300000, guid: 427024dac5effee4cb6c54cc10a6ffbe, type: 3}
   kunaiHit: {fileID: 8300000, guid: 7912234c26d07524fb89c2cea8ee2b78, type: 3}
+  kunaiDenied: {fileID: 8300000, guid: 30b7c95aeb45f3843a640c99bf424a0b, type: 3}
   sword: {fileID: 8300000, guid: 2edd298abe3d2e146b0023045e4b25f7, type: 3}
   slide: {fileID: 8300000, guid: 62e2002d81fa64e428efa6a471178238, type: 3}
   jump: {fileID: 8300000, guid: c633f5947c9d82e4598d966ee0d311fc, type: 3}

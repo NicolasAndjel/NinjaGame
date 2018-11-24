@@ -11,10 +11,12 @@ public class HeroBrain : MonoBehaviour {
     bool dead;
     bool canSlide;
     bool canGlide;
+    bool canAttack;
     float stunTimer;
     public float stunTime;
     bool sliding;
     bool gliding;
+
 
     // Use this for initialization
     void Start () {
@@ -26,6 +28,7 @@ public class HeroBrain : MonoBehaviour {
         canGlide = true;
         sliding = false;
         gliding = false;
+        canAttack = true;
     }
 	
 	// Update is called once per frame
@@ -85,7 +88,12 @@ public class HeroBrain : MonoBehaviour {
 
         if (Input.GetButtonDown("swordAttack"))
         {
-            heroBody.SwordAttack();
+            if (canAttack)
+            {
+                heroBody.SwordAttack();
+                canAttack = false;
+                Invoke("CanAttackAgain", 0.3f);
+            }
         }
 
         if (Input.GetButtonDown("kunaiThrow"))
@@ -100,6 +108,11 @@ public class HeroBrain : MonoBehaviour {
             }
             
         }
+    }
+
+    void CanAttackAgain()
+    {
+        canAttack = true;
     }
 
     void CanShootAgain()

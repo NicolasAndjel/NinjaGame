@@ -289,7 +289,7 @@ MonoBehaviour:
   enemyBrain: {fileID: 114833868156064854}
   animator: {fileID: 95704330154672572}
   life: 1
-  speed: 3
+  speed: 4
   enemyRigidBody: {fileID: 50200391747012798}
   enemyCollider: {fileID: 61314466930342954}
   shurikenPrefab: {fileID: 0}
