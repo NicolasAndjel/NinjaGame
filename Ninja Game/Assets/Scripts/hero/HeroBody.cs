@@ -35,6 +35,8 @@ public class HeroBody : MonoBehaviour {
     bool stepPlaying;
 
     public Transform spawnPoint;
+    public Camera camera;
+
 
     public float glideTime;
 
@@ -50,6 +52,7 @@ public class HeroBody : MonoBehaviour {
         sprite = GetComponent<SpriteRenderer>();
         canTakeDamage = true;
         stepPlaying = false;
+        camera = GameObject.Find("Main Camera").GetComponent<Camera>();
     }
 
     // Update is called once per frame
@@ -260,6 +263,18 @@ public class HeroBody : MonoBehaviour {
             {
                 TakingDamage(collision.gameObject.transform.position.x);
             }
+        }
+        else if (collision.gameObject.layer == 14)
+        {
+            camera.transform.SetParent(null);
+        }
+        else if (collision.gameObject.layer == 15)
+        {
+            camera.transform.SetParent(this.transform);
+        }
+        else if (collision.gameObject.layer == 16)
+        {
+            gameManager.LoadNextScene();
         }
     }
 

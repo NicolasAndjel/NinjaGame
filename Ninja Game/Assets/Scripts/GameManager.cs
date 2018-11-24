@@ -9,7 +9,6 @@ public class GameManager : MonoBehaviour {
     public GameObject winPanel;
     public GameObject pausePanel;
     public GameObject[] lives;
-
     public GameObject[] enemies;
 
     bool endGame;
@@ -66,9 +65,8 @@ public class GameManager : MonoBehaviour {
                 source.clip = levelSecond;
                 break;
         }
-        
         source.Play();
-    }
+}
 	
 	// Update is called once per frame
 	void Update () {
@@ -79,6 +77,12 @@ public class GameManager : MonoBehaviour {
     public void LoadScene(string sceneName)
     {
         SceneManager.LoadScene(sceneName);
+    }
+
+    public void LoadNextScene()
+    {
+        int nextSceneIndex = SceneManager.GetActiveScene().buildIndex + 1;
+        SceneManager.LoadScene(nextSceneIndex);
     }
 
     public void ExitGame()
