@@ -2575,7 +2575,7 @@ Prefab:
     - target: {fileID: 212823990982114536, guid: f319d3fb787248d4891ded4e60923328,
         type: 2}
       propertyPath: m_SortingOrder
-      value: -1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4148793174316780, guid: f319d3fb787248d4891ded4e60923328, type: 2}
       propertyPath: m_LocalEulerAnglesHint.y
@@ -3858,6 +3858,11 @@ Prefab:
     - target: {fileID: 1144371680091072, guid: 81768972ef3b25940aeb5a3d4b09914b, type: 2}
       propertyPath: m_Name
       value: samuraiLight (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 212116251318002944, guid: 81768972ef3b25940aeb5a3d4b09914b,
+        type: 2}
+      propertyPath: m_SortingOrder
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 81768972ef3b25940aeb5a3d4b09914b, type: 2}
