@@ -6,12 +6,13 @@ using UnityEngine.UI;
 public class HeroBody : MonoBehaviour {
 
     GameManager gameManager;
-    public int life = 3;
+    public int life;
     public float speed;
     public Rigidbody2D heroRigidBody;
     SpriteRenderer sprite;
     public float jumpForce;
-    float directionOnAir;
+    float heroDirection;
+    public bool canAdvance;
     public float slideForce;
     bool sliding;
     float slideTimer;
@@ -52,6 +53,7 @@ public class HeroBody : MonoBehaviour {
         sprite = GetComponent<SpriteRenderer>();
         canTakeDamage = true;
         stepPlaying = false;
+        canAdvance = true;
         camera = GameObject.Find("Main Camera").GetComponent<Camera>();
     }
 
@@ -96,12 +98,12 @@ public class HeroBody : MonoBehaviour {
         gameManager.source.PlayOneShot(gameManager.jump);
         heroRigidBody.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
         heroRigidBody.AddForce(Vector2.right * direction, ForceMode2D.Impulse);
-        directionOnAir = direction;
     }
         
 
     public void Move(float direction)
     {
+        heroDirection = direction;
         if (direction < 0)
         {
             sprite.flipX = true;
@@ -112,18 +114,7 @@ public class HeroBody : MonoBehaviour {
         }
         animator.SetFloat("WalkSpeed", Mathf.Abs(direction));
 
-        if (onAir)
-        {
-            if (direction > 0 && directionOnAir < 0)
-            {
-                heroRigidBody.AddForce(Vector2.right * direction / 3, ForceMode2D.Impulse);
-            }
-            else if (direction < 0 && directionOnAir > 0)
-            {
-                heroRigidBody.AddForce(Vector2.right * direction / 3, ForceMode2D.Impulse);
-            }
-        }
-        else
+        if (canAdvance)
         {
             Vector3 heroSpeed = new Vector3(direction * speed, heroRigidBody.velocity.y, 0);
             heroRigidBody.velocity = heroSpeed;
@@ -134,7 +125,6 @@ public class HeroBody : MonoBehaviour {
                 Invoke("StepSound", 0.2f);
             }
         }
-        
     }
 
     void StepSound()
@@ -243,6 +233,18 @@ public class HeroBody : MonoBehaviour {
             transform.SetParent(collision.transform);
             animator.SetInteger("SpeedY", 0);
         }
+
+        if (collision.gameObject.layer == 12)
+        {
+            if ((transform.position.x < collision.gameObject.transform.position.x && heroDirection > 0) || (transform.position.x > collision.gameObject.transform.position.x && heroDirection < 0))
+            {
+                canAdvance = false;
+            }
+            else
+            {
+                canAdvance = true;
+            }
+        }
     }
 
     private void OnCollisionExit2D(Collision2D collision)
@@ -252,7 +254,12 @@ public class HeroBody : MonoBehaviour {
             onAir = true;
             transform.SetParent(null);
         }
-        
+        if (collision.gameObject.layer == 12)
+        {
+            onAir = true;
+            canAdvance = true;
+        }
+
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -366,5 +373,12 @@ public class HeroBody : MonoBehaviour {
     private void CanTakeDamage()
     {
         canTakeDamage = true;
+    }
+
+    public void PreviousLife(int previousLife)
+    {
+        life = previousLife;
+        print("hero equals his lives to previous life");
+
     }
 }

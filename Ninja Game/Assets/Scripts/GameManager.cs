@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour {
     public GameObject pausePanel;
     public GameObject[] lives;
     public GameObject[] enemies;
+    DataHolder dataHolder;
 
     bool endGame;
 
@@ -42,16 +43,22 @@ public class GameManager : MonoBehaviour {
     public AudioClip saiThrow;
     public AudioClip bossSound;
     public AudioClip targetHit;
-    
 
-
+    HeroBody heroBody;
 
     // Use this for initialization
     void Start () {
         Time.timeScale = 1;
         enemies = GameObject.FindGameObjectsWithTag("enemy");
+        heroBody = GameObject.Find("hero").GetComponent<HeroBody>();
         Scene currentScene = SceneManager.GetActiveScene();
         string sceneName = currentScene.name;
+        dataHolder = GameObject.Find("dataHolder").GetComponent<DataHolder>();
+        if (dataHolder.rememberLife)
+        {
+            SetLife();
+            print("manager setea life");
+        }
         source.Stop();
         switch (sceneName)
         {
@@ -75,16 +82,42 @@ public class GameManager : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         PauseGame();
+        LevelSelect();
         //CheckEnemies();
+    }
+
+    public void LevelSelect()
+    {
+        if (Input.GetKeyDown("1"))
+        {
+            SceneManager.LoadScene("LevelFirst");
+        }
+        else if (Input.GetKeyDown("2"))
+        {
+            SceneManager.LoadScene("LevelSecond");
+        }
+        else if (Input.GetKeyDown("3"))
+        {
+            SceneManager.LoadScene("Level1");
+        }
+        else if (Input.GetKeyDown("4"))
+        {
+            SceneManager.LoadScene("bossFight");
+        }
     }
 
     public void LoadScene(string sceneName)
     {
+        dataHolder.ResetLife();
         SceneManager.LoadScene(sceneName);
     }
 
     public void LoadNextScene()
     {
+        dataHolder.GetLife();
+        print("manager gets life");
+        dataHolder.RememberLife();
+        print("manager remembers life");
         int nextSceneIndex = SceneManager.GetActiveScene().buildIndex + 1;
         SceneManager.LoadScene(nextSceneIndex);
     }
@@ -138,7 +171,6 @@ public class GameManager : MonoBehaviour {
     public void PlayAudio(AudioClip audioName)
     {
         source.PlayOneShot(audioName);
-        print("should be playing: " + audioName);
     }
 
     public void BossMusic()
@@ -158,6 +190,19 @@ public class GameManager : MonoBehaviour {
             {
                 life.SetActive(false);
                 break;
+            }
+        }
+    }
+
+    public void SetLife()
+    {
+        heroBody.PreviousLife(dataHolder.previousLife);
+        for (int i = 0; i < (4 - dataHolder.previousLife); i++)
+        {
+            GameObject life = lives[i];
+            if (life.activeInHierarchy)
+            {
+                life.SetActive(false);
             }
         }
     }
