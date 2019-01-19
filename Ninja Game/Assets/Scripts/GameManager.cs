@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour {
     bool endGame;
 
     public AudioSource source;
+    public AudioClip Tutorial;
     public AudioClip level1;
     public AudioClip levelFirst;
     public AudioClip levelSecond;
@@ -53,15 +54,22 @@ public class GameManager : MonoBehaviour {
         heroBody = GameObject.Find("hero").GetComponent<HeroBody>();
         Scene currentScene = SceneManager.GetActiveScene();
         string sceneName = currentScene.name;
-        dataHolder = GameObject.Find("dataHolder").GetComponent<DataHolder>();
-        if (dataHolder.rememberLife)
+        if (sceneName != "Tutorial" && sceneName != "bossFight")
         {
-            SetLife();
-            print("manager setea life");
+            dataHolder = GameObject.Find("dataHolder").GetComponent<DataHolder>();
+            if (dataHolder.rememberLife)
+            {
+                SetLife();
+                print("manager setea life");
+            }
         }
+        
         source.Stop();
         switch (sceneName)
         {
+            case "Tutorial":
+                source.clip = Tutorial;
+                break;
             case "Level1":
                 source.clip = level1;
                 break;
@@ -104,11 +112,18 @@ public class GameManager : MonoBehaviour {
         {
             SceneManager.LoadScene("bossFight");
         }
+        else if (Input.GetKeyDown("5"))
+        {
+            SceneManager.LoadScene("Tutorial");
+        }
     }
 
     public void LoadScene(string sceneName)
     {
-        dataHolder.ResetLife();
+        if (sceneName != "Tutorial" && sceneName != "Menu" && sceneName != "bossFight")
+        {
+            dataHolder.ResetLife();
+        }
         SceneManager.LoadScene(sceneName);
     }
 

@@ -222,6 +222,7 @@ MonoBehaviour:
   - {fileID: 0}
   enemies: []
   source: {fileID: 82857913951881494}
+  Tutorial: {fileID: 8300000, guid: d13eaf2cf283b654a8d8003cbb00544b, type: 3}
   level1: {fileID: 8300000, guid: d7052daa4be2bc247813fb0e3de242f0, type: 3}
   levelFirst: {fileID: 8300000, guid: 4359e16fddfb714458ca00cc534cba15, type: 3}
   levelSecond: {fileID: 8300000, guid: 77e499af3e8f5a343b38dc989c3d0ae7, type: 3}

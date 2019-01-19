@@ -208,7 +208,6 @@ public class HeroBody : MonoBehaviour {
             onAir = false;
             transform.SetParent(collision.transform);
             animator.SetInteger("SpeedY", 0);
-            //animator.SetTrigger("grounded");
             gameManager.source.PlayOneShot(gameManager.heroLand);
         }
         if (collision.gameObject.layer == 13)
@@ -232,6 +231,7 @@ public class HeroBody : MonoBehaviour {
             onAir = false;
             transform.SetParent(collision.transform);
             animator.SetInteger("SpeedY", 0);
+            animator.SetTrigger("grounded");
         }
 
         if (collision.gameObject.layer == 12)

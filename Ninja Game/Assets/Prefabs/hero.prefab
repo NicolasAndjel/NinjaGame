@@ -365,7 +365,8 @@ MonoBehaviour:
   speed: 7
   heroRigidBody: {fileID: 50935711570184236}
   jumpForce: 7
-  slideForce: 8
+  canAdvance: 0
+  slideForce: 30
   onAir: 0
   animator: {fileID: 95967086118931718}
   kunaiPrefab: {fileID: 1628558385213738, guid: 496ac73e722962c49ac5faea1a7703d4,
