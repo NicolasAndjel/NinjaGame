@@ -30,7 +30,6 @@ public class Target : MonoBehaviour {
             door.RaiseDoor();
             GetComponent<SpriteRenderer>().sprite = hitSprite;
             GetComponent<CircleCollider2D>().enabled = false;
-            print("Target Trigger detectó al Kunai");
         }
     }
 }

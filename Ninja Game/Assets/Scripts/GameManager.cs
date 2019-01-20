@@ -120,7 +120,7 @@ public class GameManager : MonoBehaviour {
 
     public void LoadScene(string sceneName)
     {
-        if (sceneName != "Tutorial" && sceneName != "Menu" && sceneName != "bossFight")
+        if (sceneName != "Tutorial" && sceneName != "Menu" && sceneName != "bossFight" && sceneName != "LevelFirst")
         {
             dataHolder.ResetLife();
         }
