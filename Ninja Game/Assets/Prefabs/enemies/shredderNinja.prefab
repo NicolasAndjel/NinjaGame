@@ -27,7 +27,7 @@ GameObject:
   - component: {fileID: 50069774980868374}
   m_Layer: 11
   m_Name: shredderNinja
-  m_TagString: Untagged
+  m_TagString: enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -288,8 +288,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shredderBrain: {fileID: 114615930996583282}
   animator: {fileID: 0}
-  life: 1
+  life: 0
   speed: 3
+  dataHolder: {fileID: 0}
   shredderRigidBody: {fileID: 50069774980868374}
   shredderCollider: {fileID: 61587021062881272}
   saiPrefab: {fileID: 1841190594071696, guid: 2ae6f27053942564881e65e3e9df56fc, type: 2}

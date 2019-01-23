@@ -10,6 +10,7 @@ public class ShredderBody : MonoBehaviour {
     public int life = 1;
     public float speed;
     Vector3 moveDirection;
+    public DataHolder dataHolder;
 
     public Rigidbody2D shredderRigidBody;
     public BoxCollider2D shredderCollider;
@@ -40,6 +41,7 @@ public class ShredderBody : MonoBehaviour {
         shredderStun = false;
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         stepPlaying = false;
+        dataHolder = GameObject.Find("dataHolder").GetComponent<DataHolder>();
     }
 
     // Update is called once per frame
@@ -188,10 +190,32 @@ public class ShredderBody : MonoBehaviour {
 
     private void ThrowRight()
     {
-        Instantiate(saiPrefab, spawnerR.transform.position, Quaternion.Euler(0, 0, 270));
+
+        GameObject sai = Instantiate(saiPrefab, spawnerR.transform.position, Quaternion.Euler(0, 0, 270));
+        float saiSpeed = sai.GetComponent<DarkKunai>().speed;
+
+        if (dataHolder.difficulty == "easy")
+        {
+            saiSpeed -= 2;
+        }
+        else if (dataHolder.difficulty == "hard")
+        {
+            saiSpeed += 2;
+        }
     }
+
     private void ThrowLeft()
     {
-        Instantiate(saiPrefab, spawnerL.transform.position, Quaternion.Euler(0, 0, 90));
+        GameObject sai = Instantiate(saiPrefab, spawnerL.transform.position, Quaternion.Euler(0, 0, 90));
+        float saiSpeed = sai.GetComponent<DarkKunai>().speed;
+
+        if (dataHolder.difficulty == "easy")
+        {
+            saiSpeed -= 2;
+        }
+        else if (dataHolder.difficulty == "hard")
+        {
+            saiSpeed += 2;
+        }
     }
 }

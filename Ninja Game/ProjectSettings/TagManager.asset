@@ -8,6 +8,7 @@ TagManager:
   - heart
   - kunai
   - Tutorial triggers
+  - dataholder
   layers:
   - Default
   - TransparentFX

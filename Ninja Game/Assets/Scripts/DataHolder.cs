@@ -6,6 +6,8 @@ public class DataHolder : MonoBehaviour {
     public int previousLife;
     public static DataHolder holder;
     public bool rememberLife = false;
+    public string difficulty;
+    public string previousDifficulty;
 
     GameManager gameManager;
     HeroBody heroBody;
@@ -25,11 +27,13 @@ public class DataHolder : MonoBehaviour {
     }
     // Use this for initialization
     void Start () {
-        print("Dataholder started");
+        difficulty = "normal";
+        previousDifficulty = "normal";        
     }
     // Update is called once per frame
     void Update () {
-
+        print("dificultad actual: " + difficulty);
+        print("dificultad anterior: " + previousDifficulty);
     }
 
     public void RememberLife()
@@ -49,4 +53,6 @@ public class DataHolder : MonoBehaviour {
         previousLife = heroBody.life;
         print("previous life assigned as " + heroBody.life);
     }
+
+
 }

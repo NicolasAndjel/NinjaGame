@@ -10,7 +10,10 @@ public class GameManager : MonoBehaviour {
     public GameObject pausePanel;
     public GameObject[] lives;
     public GameObject[] enemies;
-    DataHolder dataHolder;
+    public DataHolder dataHolder;
+    public GameObject normalDif;
+    public GameObject easylDif;
+    public GameObject hardDif;
 
     bool endGame;
 
@@ -54,16 +57,16 @@ public class GameManager : MonoBehaviour {
         heroBody = GameObject.Find("hero").GetComponent<HeroBody>();
         Scene currentScene = SceneManager.GetActiveScene();
         string sceneName = currentScene.name;
+        dataHolder = GameObject.Find("dataHolder").GetComponent<DataHolder>();
         if (sceneName != "Tutorial" && sceneName != "bossFight")
         {
-            dataHolder = GameObject.Find("dataHolder").GetComponent<DataHolder>();
             if (dataHolder.rememberLife)
             {
                 SetLife();
                 print("manager setea life");
             }
         }
-        
+        GetDifficulty();
         source.Stop();
         switch (sceneName)
         {
@@ -112,7 +115,7 @@ public class GameManager : MonoBehaviour {
         {
             SceneManager.LoadScene("bossFight");
         }
-        else if (Input.GetKeyDown("5"))
+        else if (Input.GetKeyDown("0"))
         {
             SceneManager.LoadScene("Tutorial");
         }
@@ -219,6 +222,168 @@ public class GameManager : MonoBehaviour {
             {
                 life.SetActive(false);
             }
+        }
+    }
+
+    public void SetDifficulty(string dif)
+    {
+        dataHolder.previousDifficulty = dataHolder.difficulty;
+        dataHolder.difficulty = dif;
+        GetDifficulty();
+    }
+
+    public void GetDifficulty()
+    {
+        switch (dataHolder.difficulty)
+        {
+            case "easy":
+                normalDif.SetActive(false);
+                easylDif.SetActive(true);
+                hardDif.SetActive(false);
+                print("debería verse easy");
+                break;
+            case "hard":
+                normalDif.SetActive(false);
+                easylDif.SetActive(false);
+                hardDif.SetActive(true);
+                print("debería verse hard");
+
+                break;
+            default:
+                normalDif.SetActive(true);
+                easylDif.SetActive(false);
+                hardDif.SetActive(false);
+                print("debería verse normal");
+                break;
+        }
+        for (int i = 0; i < enemies.Length; i++)
+        {
+            if (dataHolder.difficulty == "normal" && dataHolder.previousDifficulty == "easy")
+            {
+                if (enemies[i].name == "samuraiLight")
+                {
+                    enemies[i].GetComponent<EnemyBody>().life += 1;
+                    enemies[i].GetComponent<EnemyBody>().speed += 2;
+                    print("encontré un samurai light");
+                }
+                else if (enemies[i].name == "samuraiHeavy")
+                {
+                    enemies[i].GetComponent<SamuraiHeavyBody>().life += 2;
+                    enemies[i].GetComponent<SamuraiHeavyBody>().speed += 1;
+                    print("encontré un samurai Heavy");
+                }
+                else if (enemies[i].name == "shredderNinja")
+                {
+                    enemies[i].GetComponent<ShredderBody>().speed += 2;
+                    print("encontré un shredderNinja");
+                }
+            }
+            else if (dataHolder.difficulty == "normal" && dataHolder.previousDifficulty == "hard")
+            {
+                if (enemies[i].name == "samuraiLight")
+                {
+                    enemies[i].GetComponent<EnemyBody>().life -= 2;
+                    enemies[i].GetComponent<EnemyBody>().speed -= 2;
+                    print("encontré un samurai light");
+                }
+                else if (enemies[i].name == "samuraiHeavy")
+                {
+                    enemies[i].GetComponent<SamuraiHeavyBody>().life -= 2;
+                    enemies[i].GetComponent<SamuraiHeavyBody>().speed -= 2;
+                    print("encontré un samurai Heavy");
+                }
+                else if (enemies[i].name == "shredderNinja")
+                {
+                    enemies[i].GetComponent<ShredderBody>().speed -= 1;
+                    enemies[i].GetComponent<ShredderBody>().life -= 2;
+                    print("encontré un shredderNinja");
+                }
+            }
+            else if (dataHolder.difficulty == "easy" && dataHolder.previousDifficulty == "normal")
+            {
+                if (enemies[i].name == "samuraiLight")
+                {
+                    enemies[i].GetComponent<EnemyBody>().life -= 1;
+                    enemies[i].GetComponent<EnemyBody>().speed -= 2;
+                    print("encontré un samurai light");
+                }
+                else if (enemies[i].name == "samuraiHeavy")
+                {
+                    enemies[i].GetComponent<SamuraiHeavyBody>().life -= 2;
+                    enemies[i].GetComponent<SamuraiHeavyBody>().speed -= 1;
+                    print("encontré un samurai Heavy");
+                }
+                else if (enemies[i].name == "shredderNinja")
+                {
+                    enemies[i].GetComponent<ShredderBody>().speed -= 2;
+                    print("encontré un shredderNinja");
+                }
+            }
+            else if (dataHolder.difficulty == "easy" && dataHolder.previousDifficulty == "hard")
+            {
+                if (enemies[i].name == "samuraiLight")
+                {
+                    enemies[i].GetComponent<EnemyBody>().life -= 3;
+                    enemies[i].GetComponent<EnemyBody>().speed -= 4;
+                    print("encontré un samurai light");
+                }
+                else if (enemies[i].name == "samuraiHeavy")
+                {
+                    enemies[i].GetComponent<SamuraiHeavyBody>().life -= 4;
+                    enemies[i].GetComponent<SamuraiHeavyBody>().speed -= 3;
+                    print("encontré un samurai Heavy");
+                }
+                else if (enemies[i].name == "shredderNinja")
+                {
+                    enemies[i].GetComponent<ShredderBody>().speed -= 3;
+                    enemies[i].GetComponent<ShredderBody>().life -= 2;
+                    print("encontré un shredderNinja");
+                }
+            }
+            else if (dataHolder.difficulty == "hard" && dataHolder.previousDifficulty == "normal")
+            {
+                if (enemies[i].name == "samuraiLight")
+                {
+                    enemies[i].GetComponent<EnemyBody>().life += 2;
+                    enemies[i].GetComponent<EnemyBody>().speed += 2;
+                    print("encontré un samurai light");
+                }
+                else if (enemies[i].name == "samuraiHeavy")
+                {
+                    enemies[i].GetComponent<SamuraiHeavyBody>().life += 2;
+                    enemies[i].GetComponent<SamuraiHeavyBody>().speed += 2;
+                    print("encontré un samurai Heavy");
+                }
+                else if (enemies[i].name == "shredderNinja")
+                {
+                    enemies[i].GetComponent<ShredderBody>().speed += 1;
+                    enemies[i].GetComponent<ShredderBody>().life += 2;
+                    print("encontré un shredderNinja");
+                }
+            }
+            else if (dataHolder.difficulty == "hard" && dataHolder.previousDifficulty == "easy")
+            {
+                if (enemies[i].name == "samuraiLight")
+                {
+                    enemies[i].GetComponent<EnemyBody>().life += 3;
+                    enemies[i].GetComponent<EnemyBody>().speed += 4;
+                    print("encontré un samurai light");
+                }
+                else if (enemies[i].name == "samuraiHeavy")
+                {
+                    enemies[i].GetComponent<SamuraiHeavyBody>().life += 4;
+                    enemies[i].GetComponent<SamuraiHeavyBody>().speed += 3;
+                    print("encontré un samurai Heavy");
+                }
+                else if (enemies[i].name == "shredderNinja")
+                {
+                    enemies[i].GetComponent<ShredderBody>().speed += 3;
+                    enemies[i].GetComponent<ShredderBody>().life += 2;
+                    print("encontré un shredderNinja");
+                }
+            }
+
+
         }
     }
 }
