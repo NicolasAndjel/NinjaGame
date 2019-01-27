@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TutorialManager : MonoBehaviour {
 
@@ -11,7 +12,6 @@ public class TutorialManager : MonoBehaviour {
     public GameObject swords;
     public GameObject jumpObject;
     public GameObject lamp;
-    public GameObject logg1;
     public GameObject logg2;
     public GameObject target;
     public GameObject dummy;
@@ -23,6 +23,7 @@ public class TutorialManager : MonoBehaviour {
     public GameObject swordText;
     public GameObject welcomeText;
     public GameObject clearPanel;
+    public Button retryTutorial;
 
     // Use this for initialization
     void Start () {
@@ -60,14 +61,12 @@ public class TutorialManager : MonoBehaviour {
                 lamp.SetActive(false);
                 slideText.SetActive(false);
                 glideText.SetActive(true);
-                logg1.SetActive(true);
                 logg2.SetActive(true);
                 break;
             case 4:
                 hero.SetActive(true);
                 glideText.SetActive(false);
                 kunaiText.SetActive(true);
-                logg1.SetActive(false);
                 logg2.SetActive(false);
                 target.SetActive(true);
                 target.SetActive(true);
@@ -84,6 +83,7 @@ public class TutorialManager : MonoBehaviour {
                 dummy.SetActive(true);
                 Time.timeScale = 0;
                 clearPanel.SetActive(true);
+                retryTutorial.Select();
                 break;
         }
     }

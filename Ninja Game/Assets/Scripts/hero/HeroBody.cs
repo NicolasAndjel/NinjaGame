@@ -118,7 +118,7 @@ public class HeroBody : MonoBehaviour {
         {
             Vector3 heroSpeed = new Vector3(direction * speed, heroRigidBody.velocity.y, 0);
             heroRigidBody.velocity = heroSpeed;
-            if (direction != 0 && !stepPlaying)
+            if (direction != 0 && !stepPlaying && !onAir)
             {
                 gameManager.source.PlayOneShot(gameManager.heroLand, Random.Range(0.5f, 1f));
                 stepPlaying = true;

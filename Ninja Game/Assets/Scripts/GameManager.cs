@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour {
 
@@ -14,6 +15,10 @@ public class GameManager : MonoBehaviour {
     public GameObject normalDif;
     public GameObject easylDif;
     public GameObject hardDif;
+    public Button looseRetryButton;
+    public Button winRetryButton;
+    string sceneName;
+
 
     bool endGame;
 
@@ -57,8 +62,9 @@ public class GameManager : MonoBehaviour {
         enemies = GameObject.FindGameObjectsWithTag("enemy");
         heroBody = GameObject.Find("hero").GetComponent<HeroBody>();
         Scene currentScene = SceneManager.GetActiveScene();
-        string sceneName = currentScene.name;
+        sceneName = currentScene.name;
         dataHolder = GameObject.Find("dataHolder").GetComponent<DataHolder>();
+
         if (sceneName != "Tutorial" && sceneName != "bossFight")
         {
             if (dataHolder.rememberLife)
@@ -148,6 +154,7 @@ public class GameManager : MonoBehaviour {
     public void Win()
     {
         winPanel.SetActive(true);
+        winRetryButton.Select();
         source.Stop();
         source.clip = winSound;
         source.Play();
@@ -157,6 +164,7 @@ public class GameManager : MonoBehaviour {
     public void Loose()
     {
         loosePanel.SetActive(true);
+        looseRetryButton.Select();
         source.Stop();
         source.clip = gameOverSound;
         source.Play();
@@ -233,24 +241,28 @@ public class GameManager : MonoBehaviour {
 
     public void GetDifficulty()
     {
-        switch (dataHolder.difficulty)
+        if (sceneName != "Tutorial")
         {
-            case "easy":
-                normalDif.SetActive(false);
-                easylDif.SetActive(true);
-                hardDif.SetActive(false);
-                break;
-            case "hard":
-                normalDif.SetActive(false);
-                easylDif.SetActive(false);
-                hardDif.SetActive(true);
-                break;
-            default:
-                normalDif.SetActive(true);
-                easylDif.SetActive(false);
-                hardDif.SetActive(false);
-                break;
+            switch (dataHolder.difficulty)
+            {
+                case "easy":
+                    normalDif.SetActive(false);
+                    easylDif.SetActive(true);
+                    hardDif.SetActive(false);
+                    break;
+                case "hard":
+                    normalDif.SetActive(false);
+                    easylDif.SetActive(false);
+                    hardDif.SetActive(true);
+                    break;
+                default:
+                    normalDif.SetActive(true);
+                    easylDif.SetActive(false);
+                    hardDif.SetActive(false);
+                    break;
+            }
         }
+        
         
         for (int i = 0; i < enemies.Length; i++)
         {
@@ -274,6 +286,12 @@ public class GameManager : MonoBehaviour {
                     enemies[i].GetComponent<ShredderBody>().speed = 3;
                     print("encontré un shredderNinja");
                 }
+                else if (enemies[i].name == "boss")
+                {
+                    enemies[i].GetComponent<BossBody>().life = 7;
+                    enemies[i].GetComponent<BossBody>().speed = 6;
+                    print("encontré al boss");
+                }
             }
             else if (dataHolder.difficulty == "hard")
             {
@@ -295,6 +313,12 @@ public class GameManager : MonoBehaviour {
                     enemies[i].GetComponent<ShredderBody>().speed = 4;
                     print("encontré un shredderNinja");
                 }
+                else if (enemies[i].name == "boss")
+                {
+                    enemies[i].GetComponent<BossBody>().life = 9;
+                    enemies[i].GetComponent<BossBody>().speed = 7;
+                    print("encontré al boss");
+                }
             }
             else if (dataHolder.difficulty == "easy")
             {
@@ -315,6 +339,12 @@ public class GameManager : MonoBehaviour {
                     enemies[i].GetComponent<ShredderBody>().life = 0;
                     enemies[i].GetComponent<ShredderBody>().speed = 1;
                     print("encontré un shredderNinja");
+                }
+                else if (enemies[i].name == "boss")
+                {
+                    enemies[i].GetComponent<BossBody>().life = 4;
+                    enemies[i].GetComponent<BossBody>().speed = 5;
+                    print("encontré al boss");
                 }
             }
         }

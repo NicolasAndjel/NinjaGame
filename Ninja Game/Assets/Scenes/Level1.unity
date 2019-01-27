@@ -418,6 +418,17 @@ MonoBehaviour:
           m_StringArgument: easy
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 347979816}
+        m_MethodName: Select
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &215394666
@@ -708,6 +719,17 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: normal
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 1052508992}
+        m_MethodName: Select
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
@@ -1540,12 +1562,34 @@ Prefab:
       propertyPath: m_AnchoredPosition.y
       value: 93.5
       objectReference: {fileID: 0}
+    - target: {fileID: 114252542490103436, guid: fb72161b14b4d71419c4d69333db9bfa,
+        type: 2}
+      propertyPath: m_FirstSelected
+      value: 
+      objectReference: {fileID: 728498584}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fb72161b14b4d71419c4d69333db9bfa, type: 2}
   m_IsPrefabParent: 0
 --- !u!224 &728498581 stripped
 RectTransform:
   m_PrefabParentObject: {fileID: 224392607209924810, guid: fb72161b14b4d71419c4d69333db9bfa,
+    type: 2}
+  m_PrefabInternal: {fileID: 728498580}
+--- !u!114 &728498582 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114601550111664110, guid: fb72161b14b4d71419c4d69333db9bfa,
+    type: 2}
+  m_PrefabInternal: {fileID: 728498580}
+  m_Script: {fileID: 1392445389, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+--- !u!114 &728498583 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114710731896504692, guid: fb72161b14b4d71419c4d69333db9bfa,
+    type: 2}
+  m_PrefabInternal: {fileID: 728498580}
+  m_Script: {fileID: 1392445389, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+--- !u!1 &728498584 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1499846591877910, guid: fb72161b14b4d71419c4d69333db9bfa,
     type: 2}
   m_PrefabInternal: {fileID: 728498580}
 --- !u!1 &754028984
@@ -2100,6 +2144,17 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: hard
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 215394665}
+        m_MethodName: Select
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
@@ -2851,6 +2906,16 @@ Prefab:
       propertyPath: dummyHit
       value: 
       objectReference: {fileID: 8300000, guid: 912f37a1e6ddc3d488ec1782ee77ed40, type: 3}
+    - target: {fileID: 114832093409580536, guid: f76149e413952d8449107ca2e3a71cfa,
+        type: 2}
+      propertyPath: looseRetryButton
+      value: 
+      objectReference: {fileID: 728498583}
+    - target: {fileID: 114832093409580536, guid: f76149e413952d8449107ca2e3a71cfa,
+        type: 2}
+      propertyPath: winRetryButton
+      value: 
+      objectReference: {fileID: 728498582}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f76149e413952d8449107ca2e3a71cfa, type: 2}
   m_IsPrefabParent: 0
@@ -2994,11 +3059,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4348325780684926, guid: d96fe355f3da10546a3194a317b18aaa, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -2.86
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4348325780684926, guid: d96fe355f3da10546a3194a317b18aaa, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -1.66
+      value: -2.2
       objectReference: {fileID: 0}
     - target: {fileID: 4348325780684926, guid: d96fe355f3da10546a3194a317b18aaa, type: 2}
       propertyPath: m_LocalPosition.z

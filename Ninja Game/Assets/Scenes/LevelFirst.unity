@@ -1259,6 +1259,17 @@ MonoBehaviour:
           m_StringArgument: easy
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 1019640677}
+        m_MethodName: Select
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &346697143
@@ -1349,7 +1360,7 @@ MonoBehaviour:
   m_CancelButton: Cancel
   m_InputActionsPerSecond: 10
   m_RepeatDelay: 0.5
-  m_ForceModuleActive: 0
+  m_ForceModuleActive: 1
 --- !u!114 &356486887
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1361,7 +1372,7 @@ MonoBehaviour:
   m_Script: {fileID: -619905303, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FirstSelected: {fileID: 0}
+  m_FirstSelected: {fileID: 560760402}
   m_sendNavigationEvents: 1
   m_DragThreshold: 5
 --- !u!4 &356486888
@@ -2613,7 +2624,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4348325780684926, guid: d96fe355f3da10546a3194a317b18aaa, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 194.2
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 4348325780684926, guid: d96fe355f3da10546a3194a317b18aaa, type: 2}
       propertyPath: m_LocalPosition.y
@@ -3261,6 +3272,17 @@ MonoBehaviour:
           m_StringArgument: normal
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 1193791806}
+        m_MethodName: Select
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1019640678
@@ -3575,6 +3597,17 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: hard
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 346697142}
+        m_MethodName: Select
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
@@ -5092,6 +5125,26 @@ Prefab:
       propertyPath: dummyHit
       value: 
       objectReference: {fileID: 8300000, guid: 912f37a1e6ddc3d488ec1782ee77ed40, type: 3}
+    - target: {fileID: 114832093409580536, guid: f76149e413952d8449107ca2e3a71cfa,
+        type: 2}
+      propertyPath: retryButton
+      value: 
+      objectReference: {fileID: 742929860}
+    - target: {fileID: 114832093409580536, guid: f76149e413952d8449107ca2e3a71cfa,
+        type: 2}
+      propertyPath: eventSystem
+      value: 
+      objectReference: {fileID: 356486885}
+    - target: {fileID: 114832093409580536, guid: f76149e413952d8449107ca2e3a71cfa,
+        type: 2}
+      propertyPath: winRetryButton
+      value: 
+      objectReference: {fileID: 1665583032}
+    - target: {fileID: 114832093409580536, guid: f76149e413952d8449107ca2e3a71cfa,
+        type: 2}
+      propertyPath: looseRetryButton
+      value: 
+      objectReference: {fileID: 742929862}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f76149e413952d8449107ca2e3a71cfa, type: 2}
   m_IsPrefabParent: 0
