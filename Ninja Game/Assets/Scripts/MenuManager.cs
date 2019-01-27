@@ -17,6 +17,7 @@ public class MenuManager : MonoBehaviour {
         source = GetComponent<AudioSource>();
         source.PlayOneShot(menuSound, vol);
         dataHolder = GameObject.Find("dataHolder").GetComponent<DataHolder>();
+        Time.timeScale = 1;
     } 
 
     public void LoadScene(string sceneName)

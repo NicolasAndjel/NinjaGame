@@ -213,7 +213,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4636753342060970, guid: 496ac73e722962c49ac5faea1a7703d4, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 2.9084823
+      value: 3.81
       objectReference: {fileID: 0}
     - target: {fileID: 4636753342060970, guid: 496ac73e722962c49ac5faea1a7703d4, type: 2}
       propertyPath: m_LocalPosition.z
@@ -241,15 +241,15 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4636753342060970, guid: 496ac73e722962c49ac5faea1a7703d4, type: 2}
       propertyPath: m_LocalScale.x
-      value: 2.686934
+      value: 2.22
       objectReference: {fileID: 0}
     - target: {fileID: 4636753342060970, guid: 496ac73e722962c49ac5faea1a7703d4, type: 2}
       propertyPath: m_LocalScale.y
-      value: 2.2770627
+      value: 1.7
       objectReference: {fileID: 0}
     - target: {fileID: 4636753342060970, guid: 496ac73e722962c49ac5faea1a7703d4, type: 2}
       propertyPath: m_LocalScale.z
-      value: 2.6869302
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 212113753352582774, guid: 496ac73e722962c49ac5faea1a7703d4,
         type: 2}
@@ -3484,15 +3484,15 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4636753342060970, guid: 496ac73e722962c49ac5faea1a7703d4, type: 2}
       propertyPath: m_LocalScale.x
-      value: 2.0668693
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 4636753342060970, guid: 496ac73e722962c49ac5faea1a7703d4, type: 2}
       propertyPath: m_LocalScale.y
-      value: 2.0668705
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 4636753342060970, guid: 496ac73e722962c49ac5faea1a7703d4, type: 2}
       propertyPath: m_LocalScale.z
-      value: 2.0668685
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 212113753352582774, guid: 496ac73e722962c49ac5faea1a7703d4,
         type: 2}
@@ -3704,3 +3704,4 @@ MonoBehaviour:
   dummyHealth: 0
   shake_intensity: 0.2
   originPosition: {x: 0, y: 0, z: 0}
+  hero: {fileID: 374678812}

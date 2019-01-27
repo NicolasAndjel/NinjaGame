@@ -10,6 +10,7 @@ public class Dummy : MonoBehaviour {
     bool broken;
     public float shake_intensity;
     public Vector3 originPosition;
+    public HeroBody hero;
 
     // Use this for initialization
     void Start () {
@@ -17,6 +18,7 @@ public class Dummy : MonoBehaviour {
         tutorial = GameObject.Find("TutorialManager").GetComponent<TutorialManager>();
         dummyHealth = 3;
         broken = false;
+        hero.canAdvance = true;
     }
 
     // Update is called once per frame
