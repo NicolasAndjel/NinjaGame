@@ -47,6 +47,7 @@ public class GameManager : MonoBehaviour {
     public AudioClip saiThrow;
     public AudioClip bossSound;
     public AudioClip targetHit;
+    public AudioClip dummyHit;
 
     HeroBody heroBody;
 
@@ -63,7 +64,6 @@ public class GameManager : MonoBehaviour {
             if (dataHolder.rememberLife)
             {
                 SetLife();
-                print("manager setea life");
             }
         }
         GetDifficulty();
@@ -227,7 +227,6 @@ public class GameManager : MonoBehaviour {
 
     public void SetDifficulty(string dif)
     {
-        dataHolder.previousDifficulty = dataHolder.difficulty;
         dataHolder.difficulty = dif;
         GetDifficulty();
     }
@@ -240,150 +239,84 @@ public class GameManager : MonoBehaviour {
                 normalDif.SetActive(false);
                 easylDif.SetActive(true);
                 hardDif.SetActive(false);
-                print("debería verse easy");
                 break;
             case "hard":
                 normalDif.SetActive(false);
                 easylDif.SetActive(false);
                 hardDif.SetActive(true);
-                print("debería verse hard");
-
                 break;
             default:
                 normalDif.SetActive(true);
                 easylDif.SetActive(false);
                 hardDif.SetActive(false);
-                print("debería verse normal");
                 break;
         }
+        
         for (int i = 0; i < enemies.Length; i++)
         {
-            if (dataHolder.difficulty == "normal" && dataHolder.previousDifficulty == "easy")
+            if (dataHolder.difficulty == "normal")
             {
                 if (enemies[i].name == "samuraiLight")
                 {
-                    enemies[i].GetComponent<EnemyBody>().life += 1;
-                    enemies[i].GetComponent<EnemyBody>().speed += 2;
+                    enemies[i].GetComponent<EnemyBody>().life = 1;
+                    enemies[i].GetComponent<EnemyBody>().speed = 4;
                     print("encontré un samurai light");
                 }
                 else if (enemies[i].name == "samuraiHeavy")
                 {
-                    enemies[i].GetComponent<SamuraiHeavyBody>().life += 2;
-                    enemies[i].GetComponent<SamuraiHeavyBody>().speed += 1;
+                    enemies[i].GetComponent<SamuraiHeavyBody>().life = 4;
+                    enemies[i].GetComponent<SamuraiHeavyBody>().speed = 2;
                     print("encontré un samurai Heavy");
                 }
                 else if (enemies[i].name == "shredderNinja")
                 {
-                    enemies[i].GetComponent<ShredderBody>().speed += 2;
+                    enemies[i].GetComponent<ShredderBody>().life = 0;
+                    enemies[i].GetComponent<ShredderBody>().speed = 3;
                     print("encontré un shredderNinja");
                 }
             }
-            else if (dataHolder.difficulty == "normal" && dataHolder.previousDifficulty == "hard")
+            else if (dataHolder.difficulty == "hard")
             {
                 if (enemies[i].name == "samuraiLight")
                 {
-                    enemies[i].GetComponent<EnemyBody>().life -= 2;
-                    enemies[i].GetComponent<EnemyBody>().speed -= 2;
+                    enemies[i].GetComponent<EnemyBody>().life = 3;
+                    enemies[i].GetComponent<EnemyBody>().speed = 6;
                     print("encontré un samurai light");
                 }
                 else if (enemies[i].name == "samuraiHeavy")
                 {
-                    enemies[i].GetComponent<SamuraiHeavyBody>().life -= 2;
-                    enemies[i].GetComponent<SamuraiHeavyBody>().speed -= 2;
+                    enemies[i].GetComponent<SamuraiHeavyBody>().life = 5;
+                    enemies[i].GetComponent<SamuraiHeavyBody>().speed = 4;
                     print("encontré un samurai Heavy");
                 }
                 else if (enemies[i].name == "shredderNinja")
                 {
-                    enemies[i].GetComponent<ShredderBody>().speed -= 1;
-                    enemies[i].GetComponent<ShredderBody>().life -= 2;
+                    enemies[i].GetComponent<ShredderBody>().life = 2;
+                    enemies[i].GetComponent<ShredderBody>().speed = 4;
                     print("encontré un shredderNinja");
                 }
             }
-            else if (dataHolder.difficulty == "easy" && dataHolder.previousDifficulty == "normal")
+            else if (dataHolder.difficulty == "easy")
             {
                 if (enemies[i].name == "samuraiLight")
                 {
-                    enemies[i].GetComponent<EnemyBody>().life -= 1;
-                    enemies[i].GetComponent<EnemyBody>().speed -= 2;
+                    enemies[i].GetComponent<EnemyBody>().life = 0;
+                    enemies[i].GetComponent<EnemyBody>().speed = 2;
                     print("encontré un samurai light");
                 }
                 else if (enemies[i].name == "samuraiHeavy")
                 {
-                    enemies[i].GetComponent<SamuraiHeavyBody>().life -= 2;
-                    enemies[i].GetComponent<SamuraiHeavyBody>().speed -= 1;
+                    enemies[i].GetComponent<SamuraiHeavyBody>().life = 2;
+                    enemies[i].GetComponent<SamuraiHeavyBody>().speed = 1;
                     print("encontré un samurai Heavy");
                 }
                 else if (enemies[i].name == "shredderNinja")
                 {
-                    enemies[i].GetComponent<ShredderBody>().speed -= 2;
+                    enemies[i].GetComponent<ShredderBody>().life = 0;
+                    enemies[i].GetComponent<ShredderBody>().speed = 1;
                     print("encontré un shredderNinja");
                 }
             }
-            else if (dataHolder.difficulty == "easy" && dataHolder.previousDifficulty == "hard")
-            {
-                if (enemies[i].name == "samuraiLight")
-                {
-                    enemies[i].GetComponent<EnemyBody>().life -= 3;
-                    enemies[i].GetComponent<EnemyBody>().speed -= 4;
-                    print("encontré un samurai light");
-                }
-                else if (enemies[i].name == "samuraiHeavy")
-                {
-                    enemies[i].GetComponent<SamuraiHeavyBody>().life -= 4;
-                    enemies[i].GetComponent<SamuraiHeavyBody>().speed -= 3;
-                    print("encontré un samurai Heavy");
-                }
-                else if (enemies[i].name == "shredderNinja")
-                {
-                    enemies[i].GetComponent<ShredderBody>().speed -= 3;
-                    enemies[i].GetComponent<ShredderBody>().life -= 2;
-                    print("encontré un shredderNinja");
-                }
-            }
-            else if (dataHolder.difficulty == "hard" && dataHolder.previousDifficulty == "normal")
-            {
-                if (enemies[i].name == "samuraiLight")
-                {
-                    enemies[i].GetComponent<EnemyBody>().life += 2;
-                    enemies[i].GetComponent<EnemyBody>().speed += 2;
-                    print("encontré un samurai light");
-                }
-                else if (enemies[i].name == "samuraiHeavy")
-                {
-                    enemies[i].GetComponent<SamuraiHeavyBody>().life += 2;
-                    enemies[i].GetComponent<SamuraiHeavyBody>().speed += 2;
-                    print("encontré un samurai Heavy");
-                }
-                else if (enemies[i].name == "shredderNinja")
-                {
-                    enemies[i].GetComponent<ShredderBody>().speed += 1;
-                    enemies[i].GetComponent<ShredderBody>().life += 2;
-                    print("encontré un shredderNinja");
-                }
-            }
-            else if (dataHolder.difficulty == "hard" && dataHolder.previousDifficulty == "easy")
-            {
-                if (enemies[i].name == "samuraiLight")
-                {
-                    enemies[i].GetComponent<EnemyBody>().life += 3;
-                    enemies[i].GetComponent<EnemyBody>().speed += 4;
-                    print("encontré un samurai light");
-                }
-                else if (enemies[i].name == "samuraiHeavy")
-                {
-                    enemies[i].GetComponent<SamuraiHeavyBody>().life += 4;
-                    enemies[i].GetComponent<SamuraiHeavyBody>().speed += 3;
-                    print("encontré un samurai Heavy");
-                }
-                else if (enemies[i].name == "shredderNinja")
-                {
-                    enemies[i].GetComponent<ShredderBody>().speed += 3;
-                    enemies[i].GetComponent<ShredderBody>().life += 2;
-                    print("encontré un shredderNinja");
-                }
-            }
-
-
         }
     }
 }

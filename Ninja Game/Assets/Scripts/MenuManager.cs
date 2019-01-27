@@ -26,8 +26,8 @@ public class MenuManager : MonoBehaviour {
 
     public void SetDifficulty(string dif)
     {
-        dataHolder.previousDifficulty = dataHolder.difficulty;
         dataHolder.difficulty = dif;
+        print("dificultad seteada por menu manager fuera del start");
     }
 
     public void ExitGame()

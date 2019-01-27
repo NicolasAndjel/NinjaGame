@@ -2162,6 +2162,11 @@ Prefab:
       propertyPath: Tutorial
       value: 
       objectReference: {fileID: 8300000, guid: d13eaf2cf283b654a8d8003cbb00544b, type: 3}
+    - target: {fileID: 114832093409580536, guid: f76149e413952d8449107ca2e3a71cfa,
+        type: 2}
+      propertyPath: dummyHit
+      value: 
+      objectReference: {fileID: 8300000, guid: 912f37a1e6ddc3d488ec1782ee77ed40, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f76149e413952d8449107ca2e3a71cfa, type: 2}
   m_IsPrefabParent: 0
@@ -3156,7 +3161,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 1
+  m_Constraints: 5
 --- !u!61 &2108179906
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3218,7 +3223,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 58407fa6fdb8b6747b33e96d3a04aba4, type: 3}
   m_Color: {r: 0.9044118, g: 0.9044118, b: 0.9044118, a: 1}
-  m_FlipX: 0
+  m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 5.04, y: 5.45}
@@ -3252,3 +3257,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameManager: {fileID: 0}
   tutorial: {fileID: 0}
+  dummyHealth: 0
+  shake_intensity: 0.2
+  originPosition: {x: 0, y: 0, z: 0}

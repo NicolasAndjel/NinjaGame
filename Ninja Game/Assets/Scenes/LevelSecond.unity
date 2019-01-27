@@ -7263,6 +7263,11 @@ Prefab:
       propertyPath: easylDif
       value: 
       objectReference: {fileID: 466847829}
+    - target: {fileID: 114832093409580536, guid: f76149e413952d8449107ca2e3a71cfa,
+        type: 2}
+      propertyPath: dummyHit
+      value: 
+      objectReference: {fileID: 8300000, guid: 912f37a1e6ddc3d488ec1782ee77ed40, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f76149e413952d8449107ca2e3a71cfa, type: 2}
   m_IsPrefabParent: 0
